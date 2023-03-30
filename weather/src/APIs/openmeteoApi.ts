@@ -1,4 +1,4 @@
-import { createUrlWithParameters } from "./createUrlWithParameters";
+import { createUrlWithParameters } from "../helpers/createUrlWithParameters";
 import { WeatherType } from "../global/types";
 const apiUrl = "hhttps://api.open-meteo.com/v1/forecast";
 

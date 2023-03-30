@@ -1,4 +1,4 @@
-import { createUrlWithParameters } from "./createUrlWithParameters";
+import { createUrlWithParameters } from "../helpers/createUrlWithParameters";
 
 const apiUrl = "https://www.meteosource.com/api/v1/free/point";
 const apiKey = "s94h5aofifvxqiwfrosuq2mqw9qzb0771hdkatdq";
