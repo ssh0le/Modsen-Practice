@@ -8,7 +8,10 @@ interface BackgroundWrapperProps {
 
 const BackgroundWrapper = styled.div<BackgroundWrapperProps>`
   width: 100vw;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -10;
   height: 100vh;
   box-sizing: border-box;
   background-image: url(${(props) => props.imageSource});
