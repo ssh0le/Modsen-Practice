@@ -8,7 +8,7 @@ interface BackgroundWrapperProps {
 
 const BackgroundWrapper = styled.div<BackgroundWrapperProps>`
   width: 100vw;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: -10;
