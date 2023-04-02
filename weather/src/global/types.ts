@@ -11,3 +11,8 @@ export enum WeatherType {
     Unknown,
     Hail
 }
+
+export enum DayPeriod {
+    Day,
+    Nught
+}
