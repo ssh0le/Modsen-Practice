@@ -1,55 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Counter from './components/Counter/Counter';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { counterActions } from './redux/counter/slice';
+import React from 'react';
+import styled from 'styled-components';
+import WeatherPage from './components/WeatherPage';
+
+const AppWrapper = styled.div`
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  .content {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgba(243, 243, 243, 0.85);
+  }
+`
+
 
 function App(): JSX.Element {
-  const dispatch = useAppDispatch();
-
-  const { value } = useAppSelector((state) => state.counter);
-
-  const increment = (): void => {
-    dispatch(counterActions.increment());
-  };
-
-  const decrement = (): void => {
-    dispatch(counterActions.decrement());
-  };
-
-  const incrementAsync = (): void => {
-    dispatch(counterActions.incrementAsync());
-  };
-
-  const decrementAsync = (): void => {
-    dispatch(counterActions.decrementAsync());
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter
-          onIncrement={increment}
-          onDecrement={decrement}
-          onIncrementAsync={incrementAsync}
-          onDecrementAsync={decrementAsync}
-          value={value}
-        />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <div className="content">
+        <WeatherPage/>
+      </div>
+    </AppWrapper>
   );
 }
 

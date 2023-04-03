@@ -25,5 +25,9 @@
       }
     }
   },
-  "rules": {}
+  "rules": {
+     "@typescript-eslint/explicit-function-return-type": {
+      "allowExpressions": true
+    }
+  }
 }
