@@ -1,7 +1,8 @@
 import { MouseEventHandler, useState, MouseEvent } from "react";
 import styled from "styled-components";
 import ForecastSwitch from "./ForecastSwitch";
-import DailyForecast from "./DailyForecast/DailyForecast";
+import DailyForecast from "./DailyForecast";
+import HourlyForecast from "./HourlyForecast";
 
 
 const ForecastWrapper = styled.div`
@@ -28,6 +29,7 @@ const Forecast = () => {
             <ForecastSwitch selectedId={selectedOption} onClick={onOptionClickHandler}/>
         </div>
         {selectedOption === 0 && <DailyForecast/>}
+        {selectedOption === 1 && <HourlyForecast/>}
     </ForecastWrapper>)
 }
 

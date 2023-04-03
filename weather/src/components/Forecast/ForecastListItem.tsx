@@ -1,14 +1,13 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { WeatherType } from "../../../global/types";
-import { getWeatherIcon } from "../../../helpers/getWeatherIcon";
+import { WeatherType } from "../../global/types";
+import { getWeatherIcon } from "../../helpers/getWeatherIcon";
 
-const DailyForecastItemWrapper = styled.div`
+const ForecastItemWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    flex-grow: 1;
 
     .day-name {
         background-color: white;
@@ -25,21 +24,20 @@ const DailyForecastItemWrapper = styled.div`
     .weather-icon img {
         height: 100%;
     }
-
 `
 
 interface DailyForecastItemProps {
-    date: Date,
+    title: string,
     weatherType: WeatherType,
     temperature: number
 }
 
-const DailyForecastItem: FC<DailyForecastItemProps> = ({date, weatherType, temperature}) => {
+const ForecastListItem: FC<DailyForecastItemProps> = ({title, weatherType, temperature}) => {
 
     return(
-        <DailyForecastItemWrapper>
+        <ForecastItemWrapper>
             <div className="day-name">
-                {getShortDayName(date)}
+                {title}
             </div>
             <div className="weather-icon">
                 <img src={getWeatherIcon(weatherType)} alt="" />
@@ -47,18 +45,8 @@ const DailyForecastItem: FC<DailyForecastItemProps> = ({date, weatherType, tempe
             <div className="temperature">
                 {temperature}°
             </div>
-        </DailyForecastItemWrapper>
+        </ForecastItemWrapper>
     )
 }
 
-export default DailyForecastItem;
-
-// helpers
-
-function getShortDayName(date: Date): string {
-    if (date.getDay() === (new Date()).getDay()) {
-        return "Today";
-    } else {
-        return date.toLocaleString("default", { weekday: "short" });
-    }
-}
+export default ForecastListItem;
