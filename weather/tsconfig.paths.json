@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+        "@components/*": ["./components/*"],
+        "@api/*": ["./api/*"],
+        "@helpers/*": ["./helpers/*"],
+        "@global/*": ["./global/*"],
+        "@sagas/*": ["./redux/sagas/*"],
+        "@redux/*": ["./redux/*"],
+        "@selectors/*" : ["./redux/selectors/*"]
+      }
+    }
+  }

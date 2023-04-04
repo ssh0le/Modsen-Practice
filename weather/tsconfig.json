@@ -20,6 +20,7 @@
     "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true
   },
+  "extends": "./tsconfig.paths.json",
   "include": [
     "src"
   ]
