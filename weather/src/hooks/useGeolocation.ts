@@ -1,19 +1,26 @@
 import { useEffect } from "react"
-import { setGeolocation } from "../redux/ForecastLocation"
+import { setGeolocation, setCityInfo } from "@redux/ForecastLocation"
 import { useAppDispatch, useAppSelector } from "./storeHooks"
-import { selectGeolocation } from "../redux/selectors/selectLocation"
+import { getData, LocalStorageItem } from '@helpers/localStorage';
+import { CityInfoResponse } from "../api/cityInfoByGeolocationApi";
 
 
 export const useGeolocation = (): void => {
     const dispatch = useAppDispatch();
-    const geolocation = useAppSelector(selectGeolocation);
+    const location = useAppSelector(state => state.location);
 
     useEffect(() => {
-        !geolocation && navigator.geolocation.getCurrentPosition((position) => {
-            dispatch(setGeolocation({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            }));
-        });
+        const storageLocation = getData<CityInfoResponse>(LocalStorageItem.Location);
+        if (storageLocation !== null) {
+            dispatch(setCityInfo(storageLocation.data));
+        }
+        else {
+            location.geolocation === null && navigator.geolocation.getCurrentPosition((position) => {
+                dispatch(setGeolocation({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                }));
+            });
+        }
     }, [])
 }
