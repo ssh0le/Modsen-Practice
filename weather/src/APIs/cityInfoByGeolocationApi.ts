@@ -1,7 +1,7 @@
 import { createUrlWithParameters } from "../helpers/createUrlWithParameters"
 const apiUrl = "https://api.bigdatacloud.net/data/reverse-geocode-client"
 
-export interface CurrentGeolocationResponse {
+export interface CityInfoResponse {
     latitude: number
     longitude: number
     continent: string

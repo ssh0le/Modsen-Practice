@@ -10,27 +10,27 @@ export interface DailyForecastResponse {
   elevation: number
   timezone: string
   units: string
-  current: any
-  hourly: any
+  current: string | null
+  hourly: string | null
   daily: Daily
 }
 
-interface Daily {
-  data: Daum[]
+export interface Daily {
+  data: Day[]
 }
 
-interface Daum {
+export interface Day {
   day: string
   weather: string
   icon: number
   summary: string
   all_day: AllDay
-  morning: any
-  afternoon: any
-  evening: any
+  morning: string | null
+  afternoon: string | null
+  evening: string | null
 }
 
-interface AllDay {
+export interface AllDay {
   weather: string
   icon: number
   temperature: number
@@ -41,17 +41,17 @@ interface AllDay {
   precipitation: Precipitation
 }
 
-interface Wind {
+export interface Wind {
   speed: number
   dir: string
   angle: number
 }
 
-interface CloudCover {
+export interface CloudCover {
   total: number
 }
 
-interface Precipitation {
+export interface Precipitation {
   total: number
   type: string
 }
