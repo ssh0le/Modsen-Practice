@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react';
 import styled from 'styled-components';
 import WeatherPage from './components/WeatherPage';
+import {Provider} from 'react-redux';
+import {store} from './redux'
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -25,11 +27,13 @@ const AppWrapper = styled.div`
 
 function App(): JSX.Element {
   return (
-    <AppWrapper>
+    <Provider store={store}>
+      <AppWrapper>
       <div className="content">
         <WeatherPage/>
       </div>
     </AppWrapper>
+    </Provider>
   );
 }
 
