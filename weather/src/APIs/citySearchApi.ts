@@ -12,7 +12,7 @@ export interface CityInfo {
   country: string
 }
 
-export function getFindCityByNameUrl(name: string): string {
+export function getFoundedCitiesUrl(name: string): string {
     const parameters = {
         q: name,
         limit: 5,
