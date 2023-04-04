@@ -1,30 +1,24 @@
-import { call, put, takeEvery, select } from 'redux-saga/effects'
-import { setGeolocation, startFetch, setCityInfo, fetchFailed} from '../ForecastLocation';
-import { getCityInfoUrl } from '../../APIs/cityInfoByGeolocationApi';
-import { CityInfoResponse } from '../../APIs/cityInfoByGeolocationApi';
-import { RootState } from '..';
-import axios from 'axios';
+import { call, put, takeLatest } from 'redux-saga/effects'
+import { setGeolocation, startFetch, setCityInfo,  fetchFailed } from '../ForecastLocation';
+import { getCityInfoUrl, CityInfoResponse } from '@api/cityInfoByGeolocationApi';
+import { PayloadAction } from '@reduxjs/toolkit';
+import { fetchData } from '@helpers/fetchData';
+import { ForecastGeolocation } from '@global/types';
+import { setData, LocalStorageItem } from '@helpers/localStorage';
 
-const getLocation = (state: RootState) => state.location;
-type FetchDataType<T> = (url: string) => Promise<T>;
-
-function* handleGetLocation() {
+function* handleGetLocation(action: PayloadAction<ForecastGeolocation>) {
     try {
-        yield put(startFetch);
-        const { latitude, longitude } = yield select(getLocation);
-        const response = call<FetchDataType<CityInfoResponse>>(axios.get, getCityInfoUrl(latitude, longitude));
-        console.log(response);
-        
-    }
-    catch (error) {
-        yield put(fetchFailed())
-    }
+        yield put(startFetch());
+        const { latitude, longitude } = action.payload;
+        const response: CityInfoResponse = yield call(fetchData<CityInfoResponse>, getCityInfoUrl(latitude, longitude));
+        yield put(setCityInfo(response));
+        setData<CityInfoResponse>(response, LocalStorageItem.Location);
+      } catch (error) {
+        console.log(error);
+        yield put(fetchFailed());
+      }
 }
 
 export function* watchGetLocation() {
-    yield takeEvery(setGeolocation.type, handleGetLocation);
-}
-
-function getLocationInfoFailed(message: any): any {
-    throw new Error('Function not implemented.');
+    yield takeLatest(setGeolocation.type, handleGetLocation);
 }

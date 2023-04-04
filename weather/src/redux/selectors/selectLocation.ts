@@ -1,4 +1,4 @@
-import { ForecastGeolocation } from "../../global/types";
+import { ForecastGeolocation } from "@global/types";
 import { RootState } from "..";
 
 export const selectGeolocation = (state: RootState) => state.location.geolocation;

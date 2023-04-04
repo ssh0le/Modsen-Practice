@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { DailyForecastResponse } from "../../APIs/dailyForecastApi";
+import { DailyForecastResponse } from "@api/dailyForecastApi";
 
 interface DailyForecastState {
     isLoading: boolean,
