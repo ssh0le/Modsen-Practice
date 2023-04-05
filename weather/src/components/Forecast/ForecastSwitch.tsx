@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from 'react';
+import React, { FC, MouseEventHandler } from 'react';
 import styled from 'styled-components';
 
 const SwitchWrapper = styled.ul`

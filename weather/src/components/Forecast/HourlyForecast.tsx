@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { WeatherType } from '../../global/types';
 import ForecastListItem from './ForecastListItem';
+import React from 'react';
 
 const HourlyForecastWrapper = styled.div`
   overflow-x: scroll;

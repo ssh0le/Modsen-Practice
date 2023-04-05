@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { getWeatherIcon } from '../helpers/getWeatherIcon';
 import { WeatherType } from '../global/types';
+import React from 'react';
 
 const WeatherWrapper = styled.div`
     display: flex;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { WeatherType } from "../../global/types";
 import { getWeatherIcon } from "../../helpers/getWeatherIcon";

@@ -9,6 +9,7 @@ const CurrentLocationWrapper = styled.div`
     
 `
 
+
 const CurrentLocation = () => {
     useGeolocation();
     const locationInfo = useAppSelector(selectLocationInfo);

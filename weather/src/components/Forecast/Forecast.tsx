@@ -1,4 +1,4 @@
-import { MouseEventHandler, useState, MouseEvent } from "react";
+import React, { MouseEventHandler, useState, MouseEvent }  from "react";
 import styled from "styled-components";
 import ForecastSwitch from "./ForecastSwitch";
 import DailyForecast from "./DailyForecast";
