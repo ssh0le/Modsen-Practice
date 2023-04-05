@@ -21,3 +21,9 @@ export interface ForecastGeolocation {
     latitude: number,
     longitude: number
 }
+
+export interface ForecastListItem {
+    title: string,
+    weatherType: WeatherType,
+    temperature: number
+}
