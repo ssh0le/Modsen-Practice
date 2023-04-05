@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { setGeolocation, setCityInfo } from "@redux/ForecastLocation"
+import { setGeolocation, setCityInfo } from "@store/ForecastLocation"
 import { useAppDispatch, useAppSelector } from "./storeHooks"
 import { getData, LocalStorageItem } from '@helpers/localStorage';
-import { CityInfoResponse } from "../api/cityInfoByGeolocationApi";
+import { CityInfoResponse } from "@api/cityInfoByGeolocationApi";
 
 
 export const useGeolocation = (): void => {

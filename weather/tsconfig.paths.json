@@ -6,9 +6,10 @@
         "@api/*": ["./api/*"],
         "@helpers/*": ["./helpers/*"],
         "@global/*": ["./global/*"],
-        "@sagas/*": ["./redux/sagas/*"],
-        "@redux/*": ["./store/*"],
-        "@selectors/*" : ["./redux/selectors/*"]
+        "@sagas/*": ["./store/sagas/*"],
+        "@store/*": ["./store/*"],
+        "@hooks/*": ["./hooks/*"],
+        "@selectors/*" : ["./store/selectors/*"]
       }
     }
   }

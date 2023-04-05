@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import WeatherPage from './components/WeatherPage';
 import {Provider} from 'react-redux';
-import {store} from './redux'
+import {store} from '@store/index'
 
 const AppWrapper = styled.div`
   height: 100vh;
