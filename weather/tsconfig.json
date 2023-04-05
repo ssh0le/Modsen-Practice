@@ -18,7 +18,19 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@api/*": ["./src/api/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@global/*": ["./src/global/*"],
+      "@sagas/*": ["./src/store/sagas/*"],
+      "@store/*": ["./src/store/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@selectors/*" : ["./src/store/selectors/*"],
+      "@weather-icons/*": ["./src/assets/weather-icons/*"]
+    }
   },
   "extends": "./tsconfig.paths.json",
   "include": [

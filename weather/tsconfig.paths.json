@@ -9,7 +9,8 @@
         "@sagas/*": ["./store/sagas/*"],
         "@store/*": ["./store/*"],
         "@hooks/*": ["./hooks/*"],
-        "@selectors/*" : ["./store/selectors/*"]
+        "@selectors/*" : ["./store/selectors/*"],
+        "@weather-icons/*": ["./assets/weather-icons/*"]
       }
     }
   }
