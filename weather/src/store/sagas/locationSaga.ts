@@ -1,17 +1,19 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, } from 'redux-saga/effects'
 import { setGeolocation, startFetch, setCityInfo,  fetchFailed } from '../ForecastLocation';
 import { getCityInfoUrl, CityInfoResponse } from '@api/cityInfoByGeolocationApi';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { fetchData } from '@helpers/fetchData';
 import { ForecastGeolocation } from '@global/types';
 import { setData, LocalStorageItem } from '@helpers/localStorage';
+// import { handleFetchForecast } from './foreacastSaga';
 
-function* handleGetLocation(action: PayloadAction<ForecastGeolocation>) {
+function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>) {
     try {
         yield put(startFetch());
         const { latitude, longitude } = action.payload;
         const response: CityInfoResponse = yield call(fetchData<CityInfoResponse>, getCityInfoUrl(latitude, longitude));
         yield put(setCityInfo(response));
+        // yield call(handleFetchForecast, action);
         setData<CityInfoResponse>(response, LocalStorageItem.Location);
       } catch (error) {
         console.log(error);
@@ -19,6 +21,6 @@ function* handleGetLocation(action: PayloadAction<ForecastGeolocation>) {
       }
 }
 
-export function* watchGetLocation() {
-    yield takeLatest(setGeolocation.type, handleGetLocation);
+export function* watchGetLocationInfo() {
+    yield takeLatest(setGeolocation.type, handleGetLocationInfo);
 }

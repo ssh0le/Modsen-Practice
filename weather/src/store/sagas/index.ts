@@ -1,8 +1,8 @@
 import {all} from 'redux-saga/effects'
-import { watchGetLocation } from './locationSaga'
+import { watchGetLocationInfo } from './locationSaga'
 
 export default function* rootSaga() {
     yield all([
-        watchGetLocation()
+        watchGetLocationInfo(),
     ]);
 }
