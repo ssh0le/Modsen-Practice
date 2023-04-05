@@ -7,7 +7,7 @@
         "@helpers/*": ["./helpers/*"],
         "@global/*": ["./global/*"],
         "@sagas/*": ["./redux/sagas/*"],
-        "@redux/*": ["./redux/*"],
+        "@redux/*": ["./store/*"],
         "@selectors/*" : ["./redux/selectors/*"]
       }
     }
