@@ -1,4 +1,4 @@
-import {call, put} from 'redux-saga/effects'
+import {call, put, takeLatest} from 'redux-saga/effects'
 import { startFetch, fetchFailed, setDailyForecast, setHourlyForecast, fetchSucces } from '@store/forecastSlice'
 import { fetchData } from '@helpers/fetchData';
 import { PayloadAction } from '@reduxjs/toolkit';
@@ -6,9 +6,8 @@ import { getHourlyForecastUrl, HourlyForecastResponse } from '@api/hourlyForecas
 import { getDailyForecastUrl, DailyForecastResponse } from '@api/dailyForecastApi';
 import { ForecastGeolocation } from '@global/types';
 
-export function* handleFetchForecast(action: PayloadAction<ForecastGeolocation>) {
+function* handleFetchForecast(action: PayloadAction<ForecastGeolocation>) {
     try {
-        yield put(startFetch());
         const { latitude, longitude } = action.payload;
         const dailyResponse: DailyForecastResponse = yield call(fetchData<DailyForecastResponse>, getDailyForecastUrl(latitude, longitude));
         const hourlyResponse: HourlyForecastResponse = yield call(fetchData<HourlyForecastResponse>, getHourlyForecastUrl(latitude, longitude));
@@ -19,4 +18,8 @@ export function* handleFetchForecast(action: PayloadAction<ForecastGeolocation>)
     catch(error) {
         yield put(fetchFailed());
     }
+}
+
+export function* watchHandleFetchForecast() {
+    yield takeLatest(startFetch.type, handleFetchForecast)
 }
