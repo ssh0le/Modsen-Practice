@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { setGeolocation} from "@store/ForecastLocation"
+import { setGeolocation} from "@store/locationSlice"
 import { useAppDispatch, useAppSelector } from "./storeHooks"
 
 
