@@ -1,5 +1,5 @@
 import {call, put} from 'redux-saga/effects'
-import { startFetch, fetchFailed, setDailyForecast, setHourlyForecast, fetchSucces } from '@store/WeatherForecast'
+import { startFetch, fetchFailed, setDailyForecast, setHourlyForecast, fetchSucces } from '@store/forecastSlice'
 import { fetchData } from '@helpers/fetchData';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { getHourlyForecastUrl, HourlyForecastResponse } from '@api/hourlyForecastApi';

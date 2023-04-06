@@ -1,7 +1,7 @@
 import createSagaMiddleware from "@redux-saga/core";
 import { configureStore } from '@reduxjs/toolkit';
-import locationReducer from './ForecastLocation';
-import forecastReducer from './WeatherForecast'
+import locationReducer from './locationSlice';
+import forecastReducer from './forecastSlice'
 import rootSaga from "./sagas";
 
 const sagaWiddleware = createSagaMiddleware();
