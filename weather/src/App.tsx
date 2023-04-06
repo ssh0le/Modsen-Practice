@@ -2,8 +2,9 @@ import './App.css';
 import React from 'react';
 import styled from 'styled-components';
 import WeatherPage from './components/WeatherPage';
-import {Provider} from 'react-redux';
-import {store} from '@store/index'
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from '@store/index';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -22,17 +23,18 @@ const AppWrapper = styled.div`
     box-sizing: border-box;
     background-color: rgba(243, 243, 243, 0.85);
   }
-`
-
+`;
 
 function App(): JSX.Element {
   return (
     <Provider store={store}>
-      <AppWrapper>
-      <div className="content">
-        <WeatherPage/>
-      </div>
-    </AppWrapper>
+      <PersistGate loading={null} persistor={persistor}>
+        <AppWrapper>
+          <div className="content">
+            <WeatherPage />
+          </div>
+        </AppWrapper>
+      </PersistGate>
     </Provider>
   );
 }
