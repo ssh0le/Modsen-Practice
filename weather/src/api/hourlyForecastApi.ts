@@ -65,7 +65,7 @@ export function getHourlyForecastUrl(latitude: number, longitude: number): strin
         latitude,
         longitude,
         hourly: "temperature_2m,weathercode",
-        forecast_days: 2,
+        forecast_days: 3,
     }
     return createUrlWithParameters(apiUrl, parameters);
 }
