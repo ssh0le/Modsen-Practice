@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ForecastSwitch from "./ForecastSwitch";
 import DailyForecast from "./DailyForecast";
 import HourlyForecast from "./HourlyForecast";
+import { useFetchForecast } from "@hooks/useUpdateForecast";
 
 
 const ForecastWrapper = styled.div`
@@ -16,6 +17,7 @@ const ForecastWrapper = styled.div`
 `
 
 const Forecast = () => {
+    useFetchForecast();
     const [selectedOption, setSelectedOption] = useState(0);
 
     const onOptionClickHandler = (index: number): MouseEventHandler<HTMLLIElement> => {

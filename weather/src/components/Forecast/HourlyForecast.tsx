@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { WeatherType } from '../../global/types';
 import ForecastListItem from './ForecastListItem';
 import React from 'react';
+import { useAppSelector } from '@hooks/storeHooks';
+import { selectHourlyForecast } from '@store/selectors/selectForecast';
 
 const HourlyForecastWrapper = styled.div`
   overflow-x: scroll;
@@ -12,7 +13,7 @@ const HourlyForecastWrapper = styled.div`
     height: 5px;
   }
   ::-webkit-scrollbar-track {
-  background-color: rgba(153, 220, 254, 0.854);
+    background-color: rgba(153, 220, 254, 0.854);
   }
   ::-webkit-scrollbar-thumb {
     background: #888;
@@ -22,22 +23,16 @@ const HourlyForecastWrapper = styled.div`
   }
 `;
 
-interface HourlyForecastExample {
-  date: Date;
-  weatherType: WeatherType;
-  temperature: number;
-}
-
 const HourlyForecast = () => {
-  const foreacstExample: HourlyForecastExample[] = createExample(24);
+  const hourlyForeast = useAppSelector(selectHourlyForecast);
   return (
     <HourlyForecastWrapper>
-      {foreacstExample.map((item) => (
+      {hourlyForeast.map(({ title, temperature, weatherType }) => (
         <ForecastListItem
-          key={item.date.toISOString()}
-          title={getTime(item.date)}
-          weatherType={item.weatherType}
-          temperature={item.temperature}
+          key={title}
+          title={title}
+          weatherType={weatherType}
+          temperature={temperature}
         />
       ))}
     </HourlyForecastWrapper>
@@ -45,38 +40,3 @@ const HourlyForecast = () => {
 };
 
 export default HourlyForecast;
-
-// helpers
-
-function getTime(date: Date): string {
-  if (date.getHours() === new Date().getHours()) {
-    return 'Now';
-  }
-  return `${date.getHours()}:00`;
-}
-
-function getNextHourDate(hours: number): Date {
-  const today = new Date();
-  today.setTime(today.getTime() + hours * 60 * 60 * 1000);
-  return today;
-}
-
-function createExample(amount: number): HourlyForecastExample[] {
-  const example: HourlyForecastExample[] = [];
-  const weatherTypes: WeatherType[] = [
-    WeatherType.ClearSky,
-    WeatherType.Overcast,
-    WeatherType.SnowRain,
-    WeatherType.Drizzle,
-    WeatherType.Thunderstorm,
-  ];
-  for (let i = 0; i < amount; i++) {
-    example.push({
-      date: getNextHourDate(i),
-      weatherType:
-        weatherTypes[Math.floor(Math.random() * weatherTypes.length)],
-      temperature: Math.floor(Math.random() * 10),
-    });
-  }
-  return example;
-}
