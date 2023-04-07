@@ -27,12 +27,13 @@ const HourlyForecast = () => {
   const hourlyForeast = useAppSelector(selectHourlyForecast);
   return (
     <HourlyForecastWrapper>
-      {hourlyForeast.map(({ title, temperature, weatherType }) => (
+      {hourlyForeast.map(({ time, temperature, weatherType, dayPeriod }) => (
         <ForecastListItem
-          key={title}
-          title={title}
+          key={time}
+          title={time}
           weatherType={weatherType}
           temperature={temperature}
+          dayPeriod={dayPeriod}
         />
       ))}
     </HourlyForecastWrapper>

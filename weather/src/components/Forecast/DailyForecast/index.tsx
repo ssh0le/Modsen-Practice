@@ -11,10 +11,10 @@ const DailyForecast: FC = () => {
   return (
     <DailyForecastWrapper>
       {isLoading && <LoaderContainer><Loader/></LoaderContainer>}
-      {!isLoading && dailyForecast.map(({ title, temperature, weatherType }) => (
+      {!isLoading && dailyForecast.map(({ time, temperature, weatherType }) => (
         <ForecastListItem
-          key={title}
-          title={title}
+          key={time}
+          title={time}
           weatherType={weatherType}
           temperature={temperature}
         />
