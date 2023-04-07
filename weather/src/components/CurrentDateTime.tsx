@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
+import { getTimeZonedCurrentDate } from '@helpers/getTimeZonedCurrentDate';
+import { useAppSelector } from '@hooks/storeHooks';
+import { selectTimeZone } from '@store/selectors';
 
 interface DateTime {
   hours: number;
@@ -16,13 +19,13 @@ const DateTimeWrapper = styled.div`
   }
 `;
 
-const CurrentDateTime = () => {
+const CurrentDateTime: FC = () => {
   const [date, setDate] = useState(new Date());
-
+  const timeZone = useAppSelector(selectTimeZone);
   useEffect(() => {
     const interval = setInterval(() => {
-      setDate(new Date());
-    }, 20000);
+      setDate(getTimeZonedCurrentDate(timeZone));
+    }, 1000);
 
     return () => clearInterval(interval);
   });
