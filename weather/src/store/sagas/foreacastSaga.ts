@@ -10,7 +10,8 @@ function* handleFetchForecast(action: PayloadAction<ForecastGeolocation>) {
     try {
         const { latitude, longitude } = action.payload;
         const dailyResponse: DailyForecastResponse = yield call(fetchData<DailyForecastResponse>, getDailyForecastUrl(latitude, longitude));
-        const hourlyResponse: HourlyForecastResponse = yield call(fetchData<HourlyForecastResponse>, getHourlyForecastUrl(latitude, longitude));
+        const timeZone = dailyResponse.timezone.replace('/', '%2F');
+        const hourlyResponse: HourlyForecastResponse = yield call(fetchData<HourlyForecastResponse>, getHourlyForecastUrl(latitude, longitude, timeZone));
         yield put(setDailyForecast(dailyResponse));
         yield put(setHourlyForecast(hourlyResponse));
         yield put(fetchSucces());
