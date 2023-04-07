@@ -8,6 +8,7 @@ export const selectLocationInfo = (state: RootState) => state.location.locationI
 export const selectFetchTime = (state: RootState) => state.forecast.fetchTime;
 
 export const selectDaily = (state: RootState): Day[] | undefined => state.forecast.daily?.daily.data;
+export const selectTimeZone = (state: RootState): string | undefined => state.forecast.daily?.timezone;
 export const selectToday = (state: RootState) => state.forecast.daily?.daily.data[0];
 
 export const selectHourly = (state: RootState): Hourly | undefined => state.forecast.hourly?.hourly;
