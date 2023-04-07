@@ -22,8 +22,12 @@ export interface ForecastGeolocation {
     longitude: number
 }
 
-export interface ForecastListItem {
-    title: string,
+export interface DayForecast {
+    time: string,
     weatherType: WeatherType,
     temperature: number
+}
+
+export interface HourForecast extends DayForecast {
+    dayPeriod: DayPeriod
 }
