@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { WeatherType } from "../../global/types";
+import { DayPeriod, WeatherType } from "../../global/types";
 import { getWeatherIcon } from "../../helpers/getWeatherIcon";
 
 const ForecastItemWrapper = styled.div`
@@ -29,10 +29,11 @@ const ForecastItemWrapper = styled.div`
 interface DailyForecastItemProps {
     title: string,
     weatherType: WeatherType,
-    temperature: number
+    temperature: number,
+    dayPeriod?: DayPeriod
 }
 
-const ForecastListItem: FC<DailyForecastItemProps> = ({title, weatherType, temperature}) => {
+const ForecastListItem: FC<DailyForecastItemProps> = ({title, weatherType, temperature, dayPeriod = DayPeriod.Day}) => {
 
     return(
         <ForecastItemWrapper>
@@ -40,7 +41,7 @@ const ForecastListItem: FC<DailyForecastItemProps> = ({title, weatherType, tempe
                 {title}
             </div>
             <div className="weather-icon">
-                <img src={getWeatherIcon(weatherType)} alt="" />
+                <img src={getWeatherIcon(weatherType, dayPeriod)} alt="" />
             </div>
             <div className="temperature">
                 {temperature}°
