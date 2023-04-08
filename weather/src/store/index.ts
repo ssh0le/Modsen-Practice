@@ -1,7 +1,8 @@
 import createSagaMiddleware from "@redux-saga/core";
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import locationReducer from './locationSlice';
-import forecastReducer from './forecastSlice'
+import forecastReducer from './forecastSlice';
+import searchReducer from "./citySearchSlice";
 import rootSaga from "./sagas";
 import {
     persistReducer,
@@ -25,6 +26,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     location: locationReducer,
     forecast: forecastReducer,
+    search: searchReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
