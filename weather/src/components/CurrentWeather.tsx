@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { getWeatherIcon } from '../helpers/getWeatherIcon';
 import React from 'react';
 import { useAppSelector } from '@hooks/storeHooks';
-import { selectTodayForecast } from '@store/selectors/selectForecast';
+import { selectCurrentForecast } from '@store/selectors/selectForecast';
 
 const WeatherWrapper = styled.div`
     display: flex;
@@ -42,12 +42,12 @@ const WeatherWrapper = styled.div`
 `;
 
 const CurrentWeather = () => {
-  const {weatherType, temperature, summary} = useAppSelector(selectTodayForecast);
+  const {weatherType, temperature, summary, dayPeriod} = useAppSelector(selectCurrentForecast);
   return (
     <WeatherWrapper>
       <div className='weather-body'>
         <div className="weather-icon">
-          <img src={getWeatherIcon(weatherType)} alt="" />
+          <img src={getWeatherIcon(weatherType, dayPeriod)}/>
         </div>
         <div className="current-temperature">{temperature}°</div>
       </div>
