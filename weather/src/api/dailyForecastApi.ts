@@ -72,13 +72,13 @@ export function getWeatherType(icon: number): WeatherType {
     case 36: return WeatherType.Cloudly;
     case 7:
     case 8: 
+    case 12:
     case 18:
     case 21:
     case 31: return WeatherType.Overcast; 
     case 9: return WeatherType.Fog;
     case 10: return WeatherType.Drizzle;
     case 11:
-    case 12:
     case 13:
     case 32: return WeatherType.Rain;
     case 14:
