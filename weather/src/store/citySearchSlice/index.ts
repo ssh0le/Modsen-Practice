@@ -1,9 +1,9 @@
-import { CityInfoResponse } from "@api/cityInfoByGeolocationApi";
+import { FoundedCitiesResponse } from "@api/citySearchApi";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface SearchState {
     isLoading: boolean,
-    results: CityInfoResponse | null,
+    results: FoundedCitiesResponse | null,
     isError: boolean,
 }
 
@@ -21,7 +21,7 @@ const searchSlice = createSlice({
             state.isLoading = true;
             state.isError = false;
         },
-        setResults: (state, action: PayloadAction<CityInfoResponse>)=> {
+        setResults: (state, action: PayloadAction<FoundedCitiesResponse>)=> {
             state.results = action.payload;
             state.isLoading = false;
         },
