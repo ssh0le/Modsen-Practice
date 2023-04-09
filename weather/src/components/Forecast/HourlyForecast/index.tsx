@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ForecastListItem from './ForecastListItem';
+import ForecastListItem from '../ForecastListItem';
 import React from 'react';
 import { useAppSelector } from '@hooks/storeHooks';
 import { selectHourlyForecast } from '@store/selectors/selectForecast';
@@ -7,6 +7,7 @@ import { selectHourlyForecast } from '@store/selectors/selectForecast';
 const HourlyForecastWrapper = styled.div`
   overflow-x: scroll;
   display: flex;
+  gap: 10px;
   padding: 10px;
   background-color: rgba(153, 220, 254, 0.854);
   ::-webkit-scrollbar {
