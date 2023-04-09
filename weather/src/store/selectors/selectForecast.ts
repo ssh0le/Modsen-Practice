@@ -25,9 +25,7 @@ export const selectDailyForecast = createSelector(selectDaily, dailyForecast => 
     return array;
 });
 
-export const selectTimeZonedDate = createSelector(selectTimeZone, timeZone => {
-    return getTimeZonedCurrentDate(timeZone);
-})
+export const selectTimeZonedDate = createSelector(selectTimeZone, timeZone => getTimeZonedCurrentDate(timeZone));
 
 const selectSunRiseAndSet = createSelector(selectSunrises, selectSunsets, selectTimeZonedDate, (sunrises, sunsets, today) => {
     const sunIndex = sunrises?.findIndex(item => isSameDates(today, new Date(item)));
@@ -54,7 +52,7 @@ export const selectHourlyForecast = createSelector(selectHourly, selectTimeZoned
             dayPeriod = getDayPeriod(new Date(sunPeriod.sunrise), new Date(sunPeriod.sunset), time);
         }
         array.push({
-            time: getFormattedTime(time),
+            time: getFormattedTime(time, today),
             weatherType: getHourlyWeatherType(weathercode[timeIndex + i]),
             temperature: Math.round(temperature_2m[timeIndex + i]),
             dayPeriod
