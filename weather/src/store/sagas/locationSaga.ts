@@ -4,6 +4,7 @@ import { getCityInfoUrl, CityInfoResponse } from '@api/cityInfoByGeolocationApi'
 import { PayloadAction } from '@reduxjs/toolkit';
 import { fetchData } from '@helpers/fetchData';
 import { ForecastGeolocation } from '@global/types';
+import { startFetch as startFetchForecast } from '@store/forecastSlice';
 
 function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>) {
     try {
@@ -11,8 +12,8 @@ function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>) {
         const { latitude, longitude } = action.payload;
         const response: CityInfoResponse = yield call(fetchData<CityInfoResponse>, getCityInfoUrl(latitude, longitude));
         yield put(setCityInfo(response));
+        yield put(startFetchForecast(action.payload));
       } catch (error) {
-        console.log(error);
         yield put(fetchFailed());
       }
 }
