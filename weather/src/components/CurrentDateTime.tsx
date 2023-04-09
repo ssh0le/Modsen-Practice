@@ -27,7 +27,7 @@ const CurrentDateTime: FC = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  });
+  }, []);
 
   const dateTime = getDateTime(date);
   return (
