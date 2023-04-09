@@ -1,12 +1,16 @@
-import { call, put, takeLatest, delay } from 'redux-saga/effects'
-import { setResults, findCities, searchFailed } from '@store/citySearchSlice'
+import { call, put, takeLatest, delay} from 'redux-saga/effects'
+import { setResults, findCities, searchFailed, stopSearching} from '@store/citySearchSlice'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { getFoundedCities, FoundedCitiesResponse } from '@api/citySearchApi'
+import { getFoundedCities } from '@api/citySearchApi'
 
-function* handleSearchCities(action: PayloadAction<string>) {
+function* handleSearchCities(action: PayloadAction<string>): Generator<any, void, any> {
     try {
+        if (action.payload.trim().length === 0) {
+            yield put(stopSearching());
+            return;
+        }
         yield delay(800);
-        const response: FoundedCitiesResponse = yield call(getFoundedCities, action.payload);
+        const response = yield call(getFoundedCities, action.payload);
         yield put(setResults(response));
     }
     catch (error) {
