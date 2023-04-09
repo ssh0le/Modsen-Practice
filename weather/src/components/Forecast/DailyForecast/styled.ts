@@ -6,9 +6,3 @@ export const DailyForecastWrapper = styled.div`
     background-color: rgba(153, 220, 254, 0.854);
     padding: 10px;
 `
-
-export const LoaderContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    grid-column: 4;
-`
