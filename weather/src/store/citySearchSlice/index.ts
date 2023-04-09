@@ -25,6 +25,10 @@ const searchSlice = createSlice({
             state.results = action.payload;
             state.isLoading = false;
         },
+        stopSearching: (state) => {
+            state.isLoading = false;
+            state.results = [];
+        },
         searchFailed: (state) => {
             state.isLoading = false;
             state.isError = true;
@@ -32,5 +36,5 @@ const searchSlice = createSlice({
     }
 })
 
-export const {findCities, setResults, searchFailed} = searchSlice.actions;
+export const {findCities, setResults, stopSearching, searchFailed} = searchSlice.actions;
 export default searchSlice.reducer;
