@@ -1,8 +1,8 @@
-import styled from 'styled-components';
 import React, { useState, useEffect, FC } from 'react';
 import { useAppSelector } from '@hooks/storeHooks';
 import { selectTimeZone } from '@store/selectors';
 import { getTimeZonedCurrentDate } from '@helpers/getTimeZonedCurrentDate';
+import { DateTimeContainer, Date, Time } from './styled';
 
 interface DateTime {
   hours: number;
@@ -13,21 +13,14 @@ interface DateTime {
   year: number;
 }
 
-const DateTimeWrapper = styled.div`
-  .time {
-    font-size: 26px;
-  }
-`;
-
 const CurrentDateTime: FC = () => {
   let timeZone = useAppSelector(selectTimeZone);
   if (timeZone === undefined) {
-    timeZone = "";
+    timeZone = '';
   }
   const [date, setDate] = useState(getTimeZonedCurrentDate(timeZone));
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(timeZone);
       setDate(getTimeZonedCurrentDate(timeZone));
     }, 1000);
 
@@ -36,15 +29,15 @@ const CurrentDateTime: FC = () => {
 
   const dateTime = getDateTime(date);
   return (
-    <DateTimeWrapper>
-      <div className="time">
+    <DateTimeContainer>
+      <Time>
         {dateTime.hours}:{('0' + String(dateTime.minutes)).slice(-2)}
-      </div>
-      <div className="date">
+      </Time>
+      <Date>
         {dateTime.dayWeek}, {dateTime.monthName} {dateTime.monthDay},{' '}
         {dateTime.year}
-      </div>
-    </DateTimeWrapper>
+      </Date>
+    </DateTimeContainer>
   );
 };
 
