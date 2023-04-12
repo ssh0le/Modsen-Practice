@@ -20,16 +20,19 @@ const DateTimeWrapper = styled.div`
 `;
 
 const CurrentDateTime: FC = () => {
-  const timeZone = useAppSelector(selectTimeZone);
-  const currentDate = getTimeZonedCurrentDate(timeZone);
-  const [date, setDate] = useState(currentDate);
+  let timeZone = useAppSelector(selectTimeZone);
+  if (timeZone === undefined) {
+    timeZone = "";
+  }
+  const [date, setDate] = useState(getTimeZonedCurrentDate(timeZone));
   useEffect(() => {
     const interval = setInterval(() => {
+      console.log(timeZone);
       setDate(getTimeZonedCurrentDate(timeZone));
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [timeZone]);
 
   const dateTime = getDateTime(date);
   return (
