@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import UserTask from './UserEvent';
+import { getEvents } from '@api/calendarApi';
+
 
 const TaskWrapper = styled.div`
   display: flex;
@@ -22,21 +24,22 @@ const TaskWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    
   }
 `;
 
 interface UserTaskExample {
-  start: string,
-  end: string,
-  info: string
+  start: string;
+  end: string;
+  info: string;
 }
-
 const UserTasks = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   
   const clickHandler = () => {
     setIsSignedIn(true);
+    const request = getEvents(arr => console.log(arr), () => console.log('error'));
+    request.then(data => console.log(data))
+    .catch(err => console.log(err));
   };
 
   if (!isSignedIn) {
@@ -54,40 +57,57 @@ const UserTasks = () => {
     );
   }
 
-  const tasksExample: UserTaskExample[] = [{
-    start: '8:00',
-    end: '10:00',
-    info: 'Wake up'
-  }, {
-    start: '12:00',
-    end: '12:00',
-    info: 'Meet up'
-  }, {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time'
-  }, {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time'
-  }, {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time'
-  }, {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time hsa d jasghd ashgd asdh gasjdgh asjd gh'
-  }, {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time'
-  }]
-  return <TaskWrapper>
-    <div className="user-events">
-      {tasksExample.map(task => <UserTask start={task.start} end={task.end} info={task.info} key={task.info}/>)}
-    </div>
-  </TaskWrapper>;
+  const tasksExample: UserTaskExample[] = [
+    {
+      start: '8:00',
+      end: '10:00',
+      info: 'Wake up',
+    },
+    {
+      start: '12:00',
+      end: '12:00',
+      info: 'Meet up',
+    },
+    {
+      start: '15:00',
+      end: '15:00',
+      info: 'Movie time',
+    },
+    {
+      start: '15:00',
+      end: '15:00',
+      info: 'Movie time',
+    },
+    {
+      start: '15:00',
+      end: '15:00',
+      info: 'Movie time',
+    },
+    {
+      start: '15:00',
+      end: '15:00',
+      info: 'Movie time hsa d jasghd ashgd asdh gasjdgh asjd gh',
+    },
+    {
+      start: '15:00',
+      end: '15:00',
+      info: 'Movie time',
+    },
+  ];
+  return (
+    <TaskWrapper>
+      <div className="user-events">
+        {tasksExample.map((task, index) => (
+          <UserTask
+            start={task.start}
+            end={task.end}
+            info={task.info}
+            key={index}
+          />
+        ))}
+      </div>
+    </TaskWrapper>
+  );
 };
 
 export default UserTasks;

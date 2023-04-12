@@ -44,6 +44,10 @@ const WeatherPageWrapper = styled.div`
     justify-content: center;
     align-items: flex-start;
   }
+
+  .weather {
+    max-width: 40%;
+  }
 `;
 
 const WeatherPage = () => {

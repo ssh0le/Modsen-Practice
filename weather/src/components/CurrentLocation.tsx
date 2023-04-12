@@ -1,5 +1,9 @@
 import styled from "styled-components"
 import React from 'react'
+import { useGeolocation } from "../hooks/useGeolocation"
+import { useAppSelector } from "@hooks/storeHooks"
+import { selectLocationInfo } from "@selectors/selectLocation"
+
 
 const CurrentLocationWrapper = styled.div`
     
@@ -7,13 +11,11 @@ const CurrentLocationWrapper = styled.div`
 
 
 const CurrentLocation = () => {
-    const locationInfo = {
-        country: 'Belarus',
-        town: 'Minsk'
-    }
+    useGeolocation();
+    const locationInfo = useAppSelector(selectLocationInfo);
     return(
         <CurrentLocationWrapper>
-            {locationInfo.town}, {locationInfo.country}
+            {locationInfo?.city}, {locationInfo?.countryName}
         </CurrentLocationWrapper>
     )
 }

@@ -1,6 +1,6 @@
-import { createUrlWithParameters } from "../helpers/createUrlWithParameters";
-import { WeatherType } from "../global/types";
-const apiUrl = "hhttps://api.open-meteo.com/v1/forecast";
+import { createUrlWithParameters } from "@helpers/createUrlWithParameters";
+import { WeatherType } from "@global/types";
+const apiUrl = "https://api.open-meteo.com/v1/forecast";
 
 export interface HourlyForecastResponse {
     latitude: number
@@ -12,19 +12,34 @@ export interface HourlyForecastResponse {
     elevation: number
     hourly_units: HourlyUnits
     hourly: Hourly
-}
-
-export interface HourlyUnits {
+    daily_units: DailyUnits
+    daily: Daily
+  }
+  
+  export interface HourlyUnits {
     time: string
     temperature_2m: string
     weathercode: string
-}
-
-export interface Hourly {
+  }
+  
+  export interface Hourly {
     time: string[]
     temperature_2m: number[]
     weathercode: number[]
-}
+  }
+  
+  export interface DailyUnits {
+    time: string
+    sunrise: string
+    sunset: string
+  }
+  
+  export interface Daily {
+    time: string[]
+    sunrise: string[]
+    sunset: string[]
+  }
+  
 
 
 export function getWeatherType(weatherCode: number): WeatherType {
@@ -60,12 +75,14 @@ export function getWeatherType(weatherCode: number): WeatherType {
     }
 }
 
-export function getHourlyForecastUrl(latitude: number, longitude: number): string {
+export function getHourlyForecastUrl(latitude: number, longitude: number, timezone: string): string {
     const parameters = {
         latitude,
         longitude,
+        timezone,
+        daily: "sunrise,sunset",
         hourly: "temperature_2m,weathercode",
-        forecast_days: 2,
+        forecast_days: 3,
     }
     return createUrlWithParameters(apiUrl, parameters);
 }

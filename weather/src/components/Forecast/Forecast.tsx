@@ -1,22 +1,27 @@
-import { MouseEventHandler, useState, MouseEvent } from "react";
+import React, { MouseEventHandler, useState, MouseEvent, FC }  from "react";
 import styled from "styled-components";
 import ForecastSwitch from "./ForecastSwitch";
-import DailyForecast from "./DailyForecast/DailyForecast";
+import DailyForecast from "./DailyForecast";
+import HourlyForecast from "./HourlyForecast";
+import { useUpdateForecast } from "@hooks/useUpdateForecast";
+import { useAppSelector } from "@hooks/storeHooks";
+import Loader from "@components/Loader";
 
 
 const ForecastWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
-    .switch {
+    .switch, .loader {
         display: flex;
         justify-content: center;
     }
 `
 
-const Forecast = () => {
+const Forecast: FC = () => {
+    useUpdateForecast();
     const [selectedOption, setSelectedOption] = useState(0);
-
+    const isLoading = useAppSelector(state => state.forecast.isLoading);
     const onOptionClickHandler = (index: number): MouseEventHandler<HTMLLIElement> => {
         return (event: MouseEvent<HTMLLIElement>) => {
             setSelectedOption(index);
@@ -27,7 +32,9 @@ const Forecast = () => {
         <div className="switch">
             <ForecastSwitch selectedId={selectedOption} onClick={onOptionClickHandler}/>
         </div>
-        {selectedOption === 0 && <DailyForecast/>}
+        {isLoading && <div className="loader"><Loader/></div>}
+        {!isLoading && selectedOption === 0 && <DailyForecast/>}
+        {!isLoading && selectedOption === 1 && <HourlyForecast/>}
     </ForecastWrapper>)
 }
 

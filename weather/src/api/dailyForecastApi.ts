@@ -1,5 +1,5 @@
-import { WeatherType } from "../global/types";
-import { createUrlWithParameters } from "../helpers/createUrlWithParameters";
+import { WeatherType } from "@global/types";
+import { createUrlWithParameters } from "@helpers/createUrlWithParameters";
 
 const apiUrl = "https://www.meteosource.com/api/v1/free/point";
 const apiKey = "s94h5aofifvxqiwfrosuq2mqw9qzb0771hdkatdq";
@@ -10,27 +10,27 @@ export interface DailyForecastResponse {
   elevation: number
   timezone: string
   units: string
-  current: any
-  hourly: any
+  current: string | null
+  hourly: string | null
   daily: Daily
 }
 
-interface Daily {
-  data: Daum[]
+export interface Daily {
+  data: Day[]
 }
 
-interface Daum {
+export interface Day {
   day: string
   weather: string
   icon: number
   summary: string
   all_day: AllDay
-  morning: any
-  afternoon: any
-  evening: any
+  morning: string | null
+  afternoon: string | null
+  evening: string | null
 }
 
-interface AllDay {
+export interface AllDay {
   weather: string
   icon: number
   temperature: number
@@ -41,17 +41,17 @@ interface AllDay {
   precipitation: Precipitation
 }
 
-interface Wind {
+export interface Wind {
   speed: number
   dir: string
   angle: number
 }
 
-interface CloudCover {
+export interface CloudCover {
   total: number
 }
 
-interface Precipitation {
+export interface Precipitation {
   total: number
   type: string
 }
@@ -72,13 +72,13 @@ export function getWeatherType(icon: number): WeatherType {
     case 36: return WeatherType.Cloudly;
     case 7:
     case 8: 
+    case 12:
     case 18:
     case 21:
     case 31: return WeatherType.Overcast; 
     case 9: return WeatherType.Fog;
     case 10: return WeatherType.Drizzle;
     case 11:
-    case 12:
     case 13:
     case 32: return WeatherType.Rain;
     case 14:

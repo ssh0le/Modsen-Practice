@@ -14,5 +14,24 @@ export enum WeatherType {
 
 export enum DayPeriod {
     Day,
-    Nught
+    Night
+}
+
+export interface ForecastGeolocation {
+    latitude: number,
+    longitude: number
+}
+
+export interface DayForecast {
+    time: string,
+    weatherType: WeatherType,
+    temperature: number
+}
+
+export interface HourForecast extends DayForecast {
+    dayPeriod: DayPeriod
+}
+
+export interface Event {
+    date: string,
 }

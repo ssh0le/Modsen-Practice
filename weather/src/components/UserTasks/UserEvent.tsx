@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 const UserEventWrapper = styled.div`
   display: flex;

@@ -1,11 +1,10 @@
 export enum LocalStorageItem {
-    CurrentCity = 'current_city',
-    example = 'test'
+    Location = 'location',
 }
 
 interface SavedData<T> {
-    data: null | T,
-    saveDate: null | Date
+    data: T,
+    saveDate: Date
 }
 
 export function setData<T>(data: T, name: LocalStorageItem): void {
@@ -16,14 +15,11 @@ export function setData<T>(data: T, name: LocalStorageItem): void {
     }));
 }
 
-export function getData<T>(name: LocalStorageItem): SavedData<T> {
+export function getData<T>(name: LocalStorageItem): SavedData<T> | null {
     const storageData = localStorage.getItem(name);
     if (storageData === null) {
-        return {
-            data: null,
-            saveDate: null
-        }
+        return null
     } else {
-        return JSON.parse(storageData);
+        return JSON.parse(storageData) as SavedData<T>;
     }
 }

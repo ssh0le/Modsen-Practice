@@ -1,8 +1,8 @@
-import { WeatherType, DayPeriod } from "../global/types";
-import clearDay from '../assets/weather-icons/day/clear.png'
-import cloudlyDay from '../assets/weather-icons/day/clear.png'
-import clearNight from '../assets/weather-icons/night/clear.png'
-import cloudlyNight from '../assets/weather-icons/night/clear.png'
+import { WeatherType, DayPeriod } from "@global/types";
+import clearDay from '@weather-icons/day/clear.png'
+import cloudlyDay from '../assets/weather-icons/day/cloudly.png'
+import clearNight from '@weather-icons/night/clear.png'
+import cloudlyNight from '../assets/weather-icons/night/cloudly.png'
 import drizzle from '../assets/weather-icons/drizzle.png'
 import fog from '../assets/weather-icons/fog.png'
 import hail from '../assets/weather-icons/hail.png'

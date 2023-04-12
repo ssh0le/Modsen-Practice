@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { getWeatherIcon } from '../helpers/getWeatherIcon';
-import { WeatherType } from '../global/types';
+import React from 'react';
+import { useAppSelector } from '@hooks/storeHooks';
+import { selectCurrentForecast } from '@store/selectors/selectForecast';
 
 const WeatherWrapper = styled.div`
     display: flex;
@@ -35,22 +37,21 @@ const WeatherWrapper = styled.div`
 
     .description {
         margin: 0;
+        width: 100%;
     }
 `;
 
 const CurrentWeather = () => {
-  const currentWeatherType = WeatherType.ClearSky;
-  const currentTemperature = 8;
-  const description = 'Overcast all day, rain is possible';
+  const {weatherType, temperature, summary, dayPeriod} = useAppSelector(selectCurrentForecast);
   return (
     <WeatherWrapper>
       <div className='weather-body'>
         <div className="weather-icon">
-          <img src={getWeatherIcon(currentWeatherType)} alt="" />
+          <img src={getWeatherIcon(weatherType, dayPeriod)}/>
         </div>
-        <div className="current-temperature">{currentTemperature}°</div>
+        <div className="current-temperature">{temperature}°</div>
       </div>
-      <p className="description">{description}</p>
+      <p className="description">{summary}</p>
     </WeatherWrapper>
   );
 };

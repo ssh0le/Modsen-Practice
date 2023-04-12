@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+        "@components/*": ["./components/*"],
+        "@api/*": ["./api/*"],
+        "@helpers/*": ["./helpers/*"],
+        "@global/*": ["./global/*"],
+        "@sagas/*": ["./store/sagas/*"],
+        "@store/*": ["./store/*"],
+        "@hooks/*": ["./hooks/*"],
+        "@selectors/*" : ["./store/selectors/*"],
+        "@weather-icons/*": ["./assets/weather-icons/*"]
+      }
+    }
+  }
