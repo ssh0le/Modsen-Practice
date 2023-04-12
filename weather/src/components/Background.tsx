@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
+import { useAppSelector } from '@hooks/storeHooks';
+import { selectCurrentForecast } from '@store/selectors/selectForecast';
+import { getBackgroundImage } from '@helpers/getBackgroundImage';
 
 interface BackgroundWrapperProps {
   imageSource: string;
@@ -23,17 +26,18 @@ const BackgroundWrapper = styled.div<BackgroundWrapperProps>`
     width: 100%;
     height: 100%;
     background-color: white;
-    opacity: 30%;
+    opacity: 20%;
   }
 `;
 
-interface BackgroundProps extends BackgroundWrapperProps {
+interface BackgroundProps {
   container: HTMLElement;
 }
 
-const Background: FC<BackgroundProps> = ({ imageSource, container }) => {
+const Background: FC<BackgroundProps> = ({ container }) => {
+  const {weatherType, dayPeriod} = useAppSelector(selectCurrentForecast)
   return createPortal(
-    <BackgroundWrapper imageSource={imageSource}>
+    <BackgroundWrapper imageSource={getBackgroundImage(weatherType, dayPeriod)}>
       <div className="opacity"></div>
     </BackgroundWrapper>,
     container

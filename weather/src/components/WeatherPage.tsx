@@ -3,7 +3,6 @@ import CurrentDateTime from './CurrentDateTime';
 import CurrentLocation from './CurrentLocation';
 import CitySearchBar from './CitySearchBar';
 import Background from './Background'
-import sunnyImage from '../assets/background-images/clear-day.jpeg';
 import CurrentWeather from './CurrentWeather';
 import UserTasks from './UserTasks/UserEventsList';
 import Forecast from './Forecast/Forecast';
@@ -53,7 +52,7 @@ const WeatherPageWrapper = styled.div`
 const WeatherPage = () => {
   return (
     <WeatherPageWrapper>
-      <Background imageSource={sunnyImage} container={document.getElementById('background') as HTMLElement}/>
+      <Background container={document.getElementById('background') as HTMLElement}/>
       <div className="header">
         <div className="date-time-location">
           <CurrentDateTime />
