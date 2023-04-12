@@ -29,7 +29,8 @@
       "@store/*": ["./src/store/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@selectors/*" : ["./src/store/selectors/*"],
-      "@weather-icons/*": ["./src/assets/weather-icons/*"]
+      "@weather-icons/*": ["./src/assets/weather-icons/*"],
+      "@background-images/*" :["./src/assets/background-images/*"],
     }
   },
   "extends": "./tsconfig.paths.json",

@@ -10,7 +10,8 @@
         "@store/*": ["./store/*"],
         "@hooks/*": ["./hooks/*"],
         "@selectors/*" : ["./store/selectors/*"],
-        "@weather-icons/*": ["./assets/weather-icons/*"]
+        "@weather-icons/*": ["./assets/weather-icons/*"],
+        "@background-images/*" :["./src/assets/background-images/*"]
       }
     }
   }
