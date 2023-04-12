@@ -31,3 +31,7 @@ export interface DayForecast {
 export interface HourForecast extends DayForecast {
     dayPeriod: DayPeriod
 }
+
+export interface Event {
+    date: string,
+}
