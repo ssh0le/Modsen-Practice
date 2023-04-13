@@ -1,4 +1,4 @@
-import { getWeatherIcon } from '../../helpers/getWeatherIcon';
+import { getWeatherIcon } from '@helpers/getWeatherIcon';
 import React, { FC } from 'react';
 import { useAppSelector } from '@hooks/storeHooks';
 import { selectCurrentForecast } from '@store/selectors/selectForecast';
@@ -23,7 +23,7 @@ const CurrentWeather: FC = () => {
         </IconContainer>
         <Temperature>{temperature}°</Temperature>
       </WeatherBody>
-      <Description>{summary}</Description>
+      <Description>Summary: {summary}</Description>
     </WeatherContainer>
   );
 };

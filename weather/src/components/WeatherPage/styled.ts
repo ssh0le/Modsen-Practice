@@ -4,42 +4,32 @@ export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
     box-sizing: border-box;
-    padding: 40px;
-`
-
-const PageRow = styled.div`
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-start;
+    padding-top: 10vh;
 `
 
-export const Header = styled(PageRow)`
-`
-
-export const Body = styled(PageRow)`
-    align-items: flex-start;
-`
-
-export const LocalityContainer = styled.div`
-    font-size: 20px;
-`
-
-export const SearchBarContainer = styled.div`
-`
-
-export const CurrentWeatherContainer = styled.div`
-    max-width: 40%;
-`
-
-export const EventsContainer = styled.div`
-    flex-grow: 1;
-    height: 100%;
+export const LoadingPageContent = styled.div`
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
+    height: 100vh;
+    width: 100vw;
+`
+
+export const PageContent = styled.div`
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    padding: 40px;
+    gap: 40px;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-sizing: border-box;
+    flex-direction: column;
+    background-color: rgba(243, 243, 243, 0.85);
 `
 
 export const ForecastContainer = styled.div`

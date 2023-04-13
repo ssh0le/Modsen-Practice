@@ -1,11 +1,9 @@
-import React from 'react';
-import { useGeolocation } from '../../hooks/useGeolocation';
+import React, { FC } from 'react';
 import { useAppSelector } from '@hooks/storeHooks';
 import { selectLocationInfo } from '@selectors/selectLocation';
 import { CurrentLocationContainer } from './styled';
 
-const CurrentLocation = () => {
-  useGeolocation();
+const CurrentLocation:FC = () => {
   const locationInfo = useAppSelector(selectLocationInfo);
   return (
     <CurrentLocationContainer>

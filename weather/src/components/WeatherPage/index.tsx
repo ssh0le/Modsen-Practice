@@ -1,49 +1,48 @@
-import CurrentDateTime from '../CurrentDateTime';
-import CurrentLocation from '../CurrentLocation';
-import CitySearchBar from '../CitySearchBar';
 import Background from '../Background';
-import CurrentWeather from '../CurrentWeather';
-import Calendar from '../Calendar';
-import Forecast from '../Forecast/Forecast';
+import Forecast from '../Forecast';
 import React, { FC } from 'react';
 import {
   PageContainer,
-  Header,
-  Body,
-  LocalityContainer,
-  SearchBarContainer,
-  CurrentWeatherContainer,
-  EventsContainer,
   ForecastContainer,
+  PageContent,
+  LoadingPageContent,
 } from './styled';
+import PageHeader from './PageHeader';
+import PageBody from './PageBody';
+import Loader from '@components/Loader';
+import { useAppSelector } from '@hooks/storeHooks';
+import { useGeolocation } from '@hooks/useGeolocation';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme} from '@styles/themes';
+import { selectCurrentForecast } from '@store/selectors/selectForecast';
+import { DayPeriod } from '@global/types';
 
 const WeatherPage: FC = () => {
+  useGeolocation();
+  const fetchTime = useAppSelector((state) => state.forecast.fetchTime);
+  const {dayPeriod} = useAppSelector(selectCurrentForecast);
+  if (fetchTime === null) {
+    return (
+      <LoadingPageContent>
+        <Loader />
+      </LoadingPageContent>
+    );
+  }
   return (
-    <PageContainer>
-      <Background
-        container={document.getElementById('background') as HTMLElement}
-      />
-      <Header>
-        <LocalityContainer>
-          <CurrentDateTime />
-          <CurrentLocation />
-        </LocalityContainer>
-        <SearchBarContainer>
-          <CitySearchBar />
-        </SearchBarContainer>
-      </Header>
-      <Body>
-        <CurrentWeatherContainer>
-          <CurrentWeather />
-        </CurrentWeatherContainer>
-        <EventsContainer>
-          <Calendar />
-        </EventsContainer>
-      </Body>
-      <ForecastContainer>
-        <Forecast />
-      </ForecastContainer>
-    </PageContainer>
+    <ThemeProvider theme={dayPeriod === DayPeriod.Day ? lightTheme : darkTheme}>
+      <PageContainer>
+        <Background
+          container={document.getElementById('background') as HTMLElement}
+        />
+        <PageContent>
+          <PageHeader />
+          <PageBody />
+          <ForecastContainer>
+            <Forecast />
+          </ForecastContainer>
+        </PageContent>
+      </PageContainer>
+    </ThemeProvider>
   );
 };
 

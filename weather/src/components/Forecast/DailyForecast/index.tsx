@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import ForecastListItem from '../ForecastListItem';
+import ForecastListItem from '../ForecastItem';
 import { useAppSelector } from '@hooks/storeHooks';
 import { selectDailyForecast } from '@store/selectors/selectForecast';
 import { DailyForecastWrapper} from './styled';

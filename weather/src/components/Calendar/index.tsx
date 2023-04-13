@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react';
-import { getEvents } from '@api/calendarApi';
 import {
   CalendarContainer,
   MessageContainer,
@@ -57,11 +56,6 @@ const Calendar: FC = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const clickHandler = (): void => {
     setIsSignedIn(true);
-    const request = getEvents(
-      (arr) => console.log(arr),
-      () => console.log('error')
-    );
-    request.then((data) => console.log(data)).catch((err) => console.log(err));
   };
 
   return (
