@@ -21,19 +21,19 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@api/*": ["./src/api/*"],
-      "@helpers/*": ["./src/helpers/*"],
-      "@global/*": ["./src/global/*"],
-      "@sagas/*": ["./src/store/sagas/*"],
-      "@store/*": ["./src/store/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@selectors/*" : ["./src/store/selectors/*"],
-      "@weather-icons/*": ["./src/assets/weather-icons/*"],
-      "@background-images/*" :["./src/assets/background-images/*"],
+      "@components/*": ["src/components/*"],
+      "@api/*": ["src/api/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@global/*": ["src/global/*"],
+      "@sagas/*": ["src/store/sagas/*"],
+      "@store/*": ["src/store/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@selectors/*" : ["src/store/selectors/*"],
+      "@weather-icons/*": ["src/assets/weather-icons/*"],
+      "@background-images/*" :["src/assets/background-images/*"],
+      "@styles/*" :["src/styles/*"]
     }
   },
-  "extends": "./tsconfig.paths.json",
   "include": [
     "src"
   ]

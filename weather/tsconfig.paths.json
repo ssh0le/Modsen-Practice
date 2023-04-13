@@ -1,17 +1,18 @@
 {
     "compilerOptions": {
-      "baseUrl": "./src",
+      "baseUrl": ".",
       "paths": {
-        "@components/*": ["./components/*"],
-        "@api/*": ["./api/*"],
-        "@helpers/*": ["./helpers/*"],
-        "@global/*": ["./global/*"],
-        "@sagas/*": ["./store/sagas/*"],
-        "@store/*": ["./store/*"],
-        "@hooks/*": ["./hooks/*"],
-        "@selectors/*" : ["./store/selectors/*"],
-        "@weather-icons/*": ["./assets/weather-icons/*"],
-        "@background-images/*" :["./src/assets/background-images/*"]
+        "@components/*": ["src/components/*"],
+        "@api/*": ["src/api/*"],
+        "@helpers/*": ["src/helpers/*"],
+        "@global/*": ["src/global/*"],
+        "@sagas/*": ["src/store/sagas/*"],
+        "@store/*": ["src/store/*"],
+        "@hooks/*": ["src/hooks/*"],
+        "@selectors/*" : ["store/selectors/*"],
+        "@weather-icons/*": ["src/assets/weather-icons/*"],
+        "@background-images/*" :["src/assets/background-images/*"],
+        "@styles/*" :["src/styles/*"]
       }
     }
   }
