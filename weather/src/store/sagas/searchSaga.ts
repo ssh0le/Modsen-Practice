@@ -1,4 +1,4 @@
-import { call, put, takeLatest, delay} from 'redux-saga/effects'
+import { call, put, takeLatest, delay, ForkEffect} from 'redux-saga/effects'
 import { setResults, findCities, searchFailed, stopSearching} from '@store/citySearchSlice'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { getFoundedCities } from '@api/citySearchApi'
@@ -18,6 +18,6 @@ function* handleSearchCities(action: PayloadAction<string>): Generator<any, void
     }
 }
 
-export function* watchHandleSearchCities() {
+export function* watchHandleSearchCities(): Generator<ForkEffect<never>, void, unknown> {
     yield takeLatest(findCities.type, handleSearchCities);
 }

@@ -12,7 +12,7 @@ import snowRain from '../assets/weather-icons/show-rain.png'
 import snow from '../assets/weather-icons/snow.png'
 import thunderstorm from '../assets/weather-icons/thunderstorm.png'
 
-export function getWeatherIcon(weatherType: WeatherType, dayPeriod: DayPeriod = DayPeriod.Day) {
+export function getWeatherIcon(weatherType: WeatherType, dayPeriod: DayPeriod = DayPeriod.Day): string {
     switch (weatherType) {
         case WeatherType.ClearSky: return dayPeriod === DayPeriod.Day ? clearDay : clearNight;
         case WeatherType.Cloudly: return dayPeriod === DayPeriod.Day ? cloudlyDay : cloudlyNight;

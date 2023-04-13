@@ -1,4 +1,4 @@
-import { call, put, takeLatest, } from 'redux-saga/effects'
+import { ForkEffect, call, put, takeLatest, } from 'redux-saga/effects'
 import { setGeolocation, startFetch, setCityInfo,  fetchFailed } from '../locationSlice';
 import { getCityInfoUrl, CityInfoResponse } from '@api/cityInfoByGeolocationApi';
 import { PayloadAction } from '@reduxjs/toolkit';
@@ -6,7 +6,7 @@ import { fetchData } from '@helpers/fetchData';
 import { ForecastGeolocation } from '@global/types';
 import { startFetch as startFetchForecast } from '@store/forecastSlice';
 
-function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>) {
+function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>): Generator<any, void, any> {
     try {
         yield put(startFetch());
         const { latitude, longitude } = action.payload;
@@ -18,6 +18,6 @@ function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>) {
       }
 }
 
-export function* watchGetLocationInfo() {
+export function* watchGetLocationInfo(): Generator<ForkEffect<never>, void, unknown> {
     yield takeLatest(setGeolocation.type, handleGetLocationInfo);
 }
