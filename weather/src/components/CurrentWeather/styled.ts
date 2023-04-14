@@ -8,14 +8,17 @@ export const WeatherContainer = styled.div`
     padding: 10px;
     font-size: 22px;
     border-radius: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: ${props => props.theme.colors.currentForecast};
+    & * {
+        color: ${props => props.theme.colors.font}
+    }
 `
 
 export const IconContainer = styled.div`
     height: 100px;
     width: 100px;
     padding: 10px;
-    background-color: rgba(45, 183, 252, 0.498);
+    background-color: ${props => props.theme.colors.forecastBackground};
     border-radius: 10px;
     display: flex;
     justify-content: center;

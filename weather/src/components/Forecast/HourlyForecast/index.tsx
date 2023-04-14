@@ -10,15 +10,15 @@ const HourlyForecastWrapper = styled.div`
   height: 200px;
   gap: 20px;
   padding: 10px;
-  background-color: rgba(153, 220, 254, 0.854);
+  background-color: ${props => props.theme.colors.forecastBackground};
   ::-webkit-scrollbar {
     height: 5px;
   }
   ::-webkit-scrollbar-track {
-    background-color: rgba(153, 220, 254, 0.854);
+    background-color: ${props => props.theme.colors.forecastBackground};
   }
   ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: ${props => props.theme.colors.scrollBar};
   }
 `;
 

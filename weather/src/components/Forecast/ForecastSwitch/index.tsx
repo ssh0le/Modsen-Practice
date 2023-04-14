@@ -1,5 +1,5 @@
 import React, { FC, MouseEventHandler } from 'react';
-import { SwitchContainer, SwithOption } from './style';
+import { SwitchContainer, SwithOption } from './styled';
 
 
 interface SwitchProps {

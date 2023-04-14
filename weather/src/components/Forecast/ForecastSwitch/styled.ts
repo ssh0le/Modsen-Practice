@@ -14,5 +14,5 @@ export const SwitchContainer = styled.ul`
 export const SwithOption = styled.li<{isSelected: boolean}>`
     padding: 5px 10px;
     border-radius: 20px;
-    background-color: ${props => props.isSelected ? '#feb56b' : ""}
+    background-color: ${props => props.isSelected ? props.theme.colors.selectedSwitchOption : ""}
 `

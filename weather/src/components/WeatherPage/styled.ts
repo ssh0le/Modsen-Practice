@@ -29,7 +29,7 @@ export const PageContent = styled.div`
     border-radius: 5px;
     box-sizing: border-box;
     flex-direction: column;
-    background-color: rgba(243, 243, 243, 0.85);
+    background-color: ${props => props.theme.colors.contentBackground};
 `
 
 export const ForecastContainer = styled.div`

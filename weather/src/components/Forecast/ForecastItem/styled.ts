@@ -23,5 +23,5 @@ export const IconImage = styled.img`
     height: 100%;
 `
 export const Temperature = styled.div`
-
+    color: ${props => props.theme.colors.fontForecast}
 `

@@ -14,6 +14,6 @@
 //     ],
 // };
 
-export const getEvents = async (onSucess: (arr: any) => void, onError: () => void) => {
-    
+export const getEvents = (onSucess: (arr: any) => void, onError: () => void): string => {
+    return 'ss'
 }
