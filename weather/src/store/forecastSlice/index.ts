@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { DailyForecastResponse } from "@api/dailyForecastApi";
-import { HourlyForecastResponse } from "@api/hourlyForecastApi";
-import { ForecastGeolocation } from "@global/types";
+import { ForecastGeolocation, HourlyForecastResponse, DailyForecastResponse } from "@global/types";
 
 interface WeatherForecastState {
    fetchTime: string | null,

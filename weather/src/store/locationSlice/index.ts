@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CityInfoResponse } from "@api/cityInfoByGeolocationApi";
-import { ForecastGeolocation } from "@global/types";
+import { ForecastGeolocation, CityInfoResponse } from "@global/types";
 
 export interface LocationState {
     geolocation: ForecastGeolocation | null,

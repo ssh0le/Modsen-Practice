@@ -1,8 +1,5 @@
 import { RootState } from "..";
-import { Day } from "@api/dailyForecastApi";
-import { Hourly } from "@api/hourlyForecastApi";
-import { ForecastGeolocation } from "@global/types";
-import { CityInfoResponse } from "@api/cityInfoByGeolocationApi";
+import { ForecastGeolocation, CityInfoResponse, Hourly, Day } from "@global/types";
 
 export const selectGeolocation = (state: RootState): ForecastGeolocation| null => state.location.geolocation;
 export const selectLocationInfo = (state: RootState): CityInfoResponse | null => state.location.locationInfo;

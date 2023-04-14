@@ -3,8 +3,8 @@ import { createSelector } from "@reduxjs/toolkit";
 import { selectDaily, selectHourly, selectSunrises, selectSunsets, selectTimeZone, selectToday } from ".";
 import { DayForecast, DayPeriod, HourForecast, WeatherType } from "@global/types";
 import { getShortDayName } from "@helpers/getShortDayName";
-import { getWeatherType } from "@api/dailyForecastApi";
-import { getWeatherType as getHourlyWeatherType } from "@api/hourlyForecastApi";
+import { getDailyWeatherType } from "@helpers/getDailyWetherType";
+import { getHourlyWeatherType } from "@helpers/getHourlyWeatherType";
 import { getFormattedTime } from "@helpers/getFormattedTime";
 import { getTimeZonedCurrentDate } from "@helpers/getTimeZonedCurrentDate";
 import { isSameDates } from "@helpers/isSameDates";
@@ -18,7 +18,7 @@ export const selectDailyForecast = createSelector(selectDaily, dailyForecast => 
     dailyForecast.forEach(({ day, all_day }) => {
         array.push({
             time: getShortDayName(new Date(day)),
-            weatherType: getWeatherType(all_day.icon),
+            weatherType: getDailyWeatherType(all_day.icon),
             temperature: Math.round(all_day.temperature_max)
         })
     });

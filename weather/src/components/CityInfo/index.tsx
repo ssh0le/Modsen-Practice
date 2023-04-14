@@ -4,13 +4,25 @@ import { City, Country, CityInfoContainer } from './styled';
 interface CityInfoProps {
   name: string;
   country: string;
-  onClick: (event: MouseEvent<HTMLLIElement>) => void;
+  latitude: number;
+  longitude: number;
+  onClick: (latitude: number, longitued: number) => void;
   onMouseDown: (event: MouseEvent<HTMLLIElement>) => void;
 }
 
-const CityInfo: FC<CityInfoProps> = ({ name, country, onClick, onMouseDown }) => {
+// memo
+
+const CityInfo: FC<CityInfoProps> = ({
+  name,
+  country,
+  latitude,
+  longitude,
+  onClick,
+  onMouseDown,
+}) => {
+  const handleOnClick = (): void => onClick(latitude, longitude);
   return (
-    <CityInfoContainer onClick={onClick} onMouseDown={onMouseDown}>
+    <CityInfoContainer onClick={handleOnClick} onMouseDown={onMouseDown}>
       <Country>{country}, </Country>
       <City>{name}</City>
     </CityInfoContainer>

@@ -1,4 +1,4 @@
-import { FoundedCitiesResponse } from "@api/citySearchApi";
+import { FoundedCitiesResponse } from "@global/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface SearchState {
