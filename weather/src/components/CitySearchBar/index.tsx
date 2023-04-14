@@ -25,12 +25,7 @@ const CitySearchBar: FC = () => {
   const dispatch = useAppDispatch();
   const ref = useRef<HTMLInputElement>(null);
 
-  let hasResults = false;
-  if (results !== null) {
-    if (results.length > 0) {
-      hasResults = true;
-    }
-  }
+  const hasResults = results !== null && results.length > 0;
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = event.target.value;
@@ -50,17 +45,12 @@ const CitySearchBar: FC = () => {
     setShowList(false);
 
   const handleOnFocus = (event: FocusEvent<HTMLInputElement>): void => {
-    if (event.target.value.trim().length !== 0){
+    if (event.target.value.trim().length !== 0) {
       setShowList(true);
     }
-  }
+  };
 
-  const handleOnClickListItem = (
-    event: MouseEvent<HTMLLIElement>,
-    latitude: number,
-    longitude: number
-  ): void => {
-    event.preventDefault();
+  const handleOnClick = (latitude: number, longitude: number): void => {
     dispatch(setGeolocation({ latitude, longitude }));
     setShowList(false);
     if (ref.current !== null) {
@@ -68,26 +58,6 @@ const CitySearchBar: FC = () => {
       ref.current.blur();
     }
   };
-
-  let listContent;
-
-  if (results === null || isLoading) {
-    listContent = <Loader />;
-  } else {
-    listContent = !hasResults ? (
-      <NoResults>No results</NoResults>
-    ) : (
-      results.map((item, index) => (
-        <CityInfo
-          onMouseDown={handleOnMouseDown}
-          onClick={(event) => handleOnClickListItem(event, item.lat, item.lon)}
-          key={index}
-          name={item.name}
-          country={item.country}
-        />
-      ))
-    );
-  }
 
   return (
     <SearchBarContainer>
@@ -100,7 +70,23 @@ const CitySearchBar: FC = () => {
       />
       {showList && (
         <CitiesListContainer>
-          <CitiesList>{listContent}</CitiesList>
+          <CitiesList>
+            {isLoading && <Loader />}
+            {!isLoading && !hasResults && <NoResults>No results</NoResults>}
+            {!isLoading &&
+              hasResults &&
+              results.map((item, index) => (
+                <CityInfo
+                  onMouseDown={handleOnMouseDown}
+                  onClick={handleOnClick}
+                  key={index}
+                  name={item.name}
+                  country={item.country}
+                  latitude={item.lat}
+                  longitude={item.lon}
+                />
+              ))}
+          </CitiesList>
         </CitiesListContainer>
       )}
     </SearchBarContainer>
