@@ -1,19 +1,30 @@
-import React, { FC, MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 import { SwitchContainer, SwithOption } from './styled';
-
 
 interface SwitchProps {
   selectedId: number;
   onClick: (index: number) => MouseEventHandler<HTMLLIElement>;
 }
 
-const ForecastSwitch: FC<SwitchProps> = ({ selectedId, onClick }) => {
+function ForecastSwitch({ selectedId, onClick }: SwitchProps): JSX.Element {
   const switchOptions = ['Daily forecast', 'Hourly forecast'];
   return (
     <SwitchContainer>
-      {switchOptions.map((option, index) => <SwithOption isSelected={selectedId === index} key={index} onClick={onClick(index)}>{option}</SwithOption>)}
+      {switchOptions.map((option, index) => (
+        <SwithOption
+          isSelected={selectedId === index}
+          key={index}
+          onClick={onClick(index)}
+        >
+          {option}
+        </SwithOption>
+      ))}
     </SwitchContainer>
   );
-};
+}
 
-export default ForecastSwitch;
+export default React.memo<SwitchProps>(
+  ForecastSwitch,
+  (prevProps: Readonly<SwitchProps>, nextProps: Readonly<SwitchProps>) =>
+    prevProps.selectedId === nextProps.selectedId
+);
