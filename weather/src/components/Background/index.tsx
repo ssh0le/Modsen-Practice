@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useAppSelector } from '@hooks/storeHooks';
 import { selectCurrentForecast } from '@store/selectors/selectForecast';
@@ -11,9 +11,18 @@ interface BackgroundProps {
 
 const Background: FC<BackgroundProps> = ({ container }) => {
   const { weatherType, dayPeriod } = useAppSelector(selectCurrentForecast);
+  const [src, setSrc] = useState("");
+
+  useEffect(() => {
+    const src = getBackgroundImage(weatherType, dayPeriod);
+    const img = new Image();
+    img.src = src;
+    img.onload = () => setSrc(src);
+  }, [weatherType])
+
   return createPortal(
     <BackgroundContainer
-      imageSource={getBackgroundImage(weatherType, dayPeriod)}
+      imageSource={src}
     >
       <OpacityLayer />
     </BackgroundContainer>,
