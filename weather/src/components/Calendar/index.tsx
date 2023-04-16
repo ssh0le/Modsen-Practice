@@ -1,61 +1,63 @@
-import React, { FC, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   CalendarContainer,
   MessageContainer,
   Message,
-  SignInButton,
+  Button,
+  Header,
+  OptionButton,
   ListContainer,
+  NoResults,
 } from './styled';
 import EventItem from './EventItem';
+import { apiCalendar } from '@api/calendarApi';
+import { useAppDispatch, useAppSelector } from '@hooks/storeHooks';
+import { resetEvents, setEvents, setIsLoading } from '@store/eventsSlice';
+import { getFormattedTime } from '@helpers/getFormattedTime';
+import Loader from '@components/Loader';
 
-interface UserTaskExample {
-  start: string;
-  end: string;
-  info: string;
-}
-
-const tasksExample: UserTaskExample[] = [
-  {
-    start: '8:00',
-    end: '10:00',
-    info: 'Wake up',
-  },
-  {
-    start: '12:00',
-    end: '12:00',
-    info: 'Meet up',
-  },
-  {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time',
-  },
-  {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time',
-  },
-  {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time',
-  },
-  {
-    start: '15:00',
-    end: '15:00',
-    info: 'Very very very very very very very very very very very long task',
-  },
-  {
-    start: '15:00',
-    end: '15:00',
-    info: 'Movie time',
-  },
-];
-
-const Calendar: FC = () => {
+function Calendar(): JSX.Element {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const clickHandler = (): void => {
+  const [showEvents, setShowEvents] = useState(false);
+  const { isLoading, list, isFetched } = useAppSelector(
+    (state) => state.events
+  );
+
+  const dispatch = useAppDispatch();
+
+  const handleOnClick = (): void => {
+    apiCalendar.handleAuthClick();
     setIsSignedIn(true);
+    dispatch(resetEvents());
+  };
+
+  useEffect(() => {
+    dispatch(resetEvents());
+    return () => {
+      dispatch(resetEvents());
+    };
+  }, []);
+
+  const handleShowButtonClick = (): void => {
+    if (!isFetched) {
+      dispatch(setIsLoading(true));
+      apiCalendar
+        .listUpcomingEvents(10)
+        .then(({ result }: any) => {
+          dispatch(setEvents(result.items));
+        })
+        .catch((e: any) => {
+          throw e;
+        });
+    }
+    setShowEvents((prev) => !prev);
+  };
+
+  const handleSignOutButtonClick = (): void => {
+    apiCalendar.handleSignoutClick();
+    dispatch(resetEvents());
+    setIsSignedIn(false);
+    setShowEvents(false);
   };
 
   return (
@@ -65,20 +67,37 @@ const Calendar: FC = () => {
           <Message>
             Do you have planes for today?<br></br>Let’s check!
           </Message>
-          <SignInButton onClick={clickHandler}>
-            Sign in with Google
-          </SignInButton>
+          <Button onClick={handleOnClick}>Sign in with google</Button>
         </MessageContainer>
       )}
       {isSignedIn && (
-        <ListContainer>
-          {tasksExample.map(({start, end, info}, index) => (
-            <EventItem key={index} start={start} end={end} info={info} />
-          ))}
-        </ListContainer>
+        <>
+          <Header>
+            <OptionButton onClick={handleShowButtonClick}>
+              {showEvents ? 'Hide' : 'Show'} events
+            </OptionButton>
+            <OptionButton onClick={handleSignOutButtonClick}>
+              Sign out
+            </OptionButton>
+          </Header>
+          {showEvents && <ListContainer>
+            {isLoading && <Loader />}
+            {!isLoading &&
+              list.length > 0 &&
+              list.map(({ start, end, summary }, index) => (
+                <EventItem
+                  key={index}
+                  start={getFormattedTime(new Date(start.dateTime), new Date())}
+                  end={end.dateTime}
+                  info={summary}
+                />
+              ))}
+            {!isLoading && list.length === 0 && <NoResults>No events</NoResults>}
+          </ListContainer>}
+        </>
       )}
     </CalendarContainer>
   );
-};
+}
 
-export default Calendar;
+export default React.memo(Calendar);
