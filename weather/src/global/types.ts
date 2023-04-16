@@ -138,19 +138,18 @@ export interface Precipitation {
     type: string
 }
 
-
 export enum WeatherType {
-    ClearSky,
-    Overcast,
-    Cloudly,
-    Fog,
-    Drizzle,
-    Rain,
-    Snow,
-    SnowRain,
-    Thunderstorm,
-    Unknown,
-    Hail
+    ClearSky = 'Clear',
+    Overcast = 'Overcast',
+    Cloudly = 'Cloudly',
+    Fog = 'Fog',
+    Drizzle = "Drizzle",
+    Rain = 'Rain',
+    Snow = 'Snow',
+    SnowRain = 'Snowrain',
+    Thunderstorm = 'Thunderstrom',
+    Unknown = 'Unknown',
+    Hail = 'Hail'
 }
 
 export enum DayPeriod {
@@ -174,5 +173,18 @@ export interface HourForecast extends DayForecast {
 }
 
 export interface Event {
-    date: string,
-}
+    id: string
+    summary: string
+    start: Start
+    end: End
+  }
+  
+  export interface Start {
+    dateTime: string
+    timeZone: string
+  }
+  
+  export interface End {
+    dateTime: string
+    timeZone: string
+  }

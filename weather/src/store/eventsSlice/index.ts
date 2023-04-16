@@ -4,11 +4,13 @@ import { Event } from "@global/types";
 interface EventsState {
     list: Event[],
     isLoading: boolean,
+    isFetched: boolean,
 }
 
 const initialState: EventsState = {
     list: [],
     isLoading: false,
+    isFetched: false,
 }
 
 const eventsSlice = createSlice({
@@ -17,6 +19,12 @@ const eventsSlice = createSlice({
     reducers: {
         setEvents: (state, action: PayloadAction<Event[]>) => {
             state.list = action.payload;
+            state.isFetched = true;
+            state.isLoading = false;
+        },
+        resetEvents: (state) => {
+            state.list = [];
+            state.isFetched = false;
         },
         setIsLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;
@@ -24,5 +32,5 @@ const eventsSlice = createSlice({
     }
 })
 
-export const {setEvents, setIsLoading} = eventsSlice.actions;
+export const {setEvents, setIsLoading, resetEvents} = eventsSlice.actions;
 export default eventsSlice.reducer;
