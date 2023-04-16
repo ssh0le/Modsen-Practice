@@ -11,6 +11,8 @@ import {
   WeatherBody,
 } from './styled';
 
+// alt 
+
 const CurrentWeather: FC = () => {
   const { weatherType, temperature, summary, dayPeriod } = useAppSelector(
     selectCurrentForecast
