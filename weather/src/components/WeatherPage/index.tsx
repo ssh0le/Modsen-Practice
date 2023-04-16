@@ -13,14 +13,14 @@ import Loader from '@components/Loader';
 import { useAppSelector } from '@hooks/storeHooks';
 import { useGeolocation } from '@hooks/useGeolocation';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme} from '@styles/themes';
+import { lightTheme, darkTheme } from '@styles/themes';
 import { selectCurrentForecast } from '@store/selectors/selectForecast';
 import { DayPeriod } from '@global/types';
 
 const WeatherPage: FC = () => {
   useGeolocation();
   const fetchTime = useAppSelector((state) => state.forecast.fetchTime);
-  const {dayPeriod} = useAppSelector(selectCurrentForecast);
+  const { dayPeriod } = useAppSelector(selectCurrentForecast);
   if (fetchTime === null) {
     return (
       <LoadingPageContent>

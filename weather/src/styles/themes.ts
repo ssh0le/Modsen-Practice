@@ -6,7 +6,7 @@ export const lightTheme: DefaultTheme = {
         itemsBackground: 'rgba(45, 183, 252, 0.498)',
         forecastBackground: 'rgba(153, 220, 254, 0.854)',
         scrollBar: 'rgb(136, 136, 136)',
-        currentForecast: '',
+        currentForecast: 'rgb(255, 255, 255)',
         switchBackground: '',
         selectedSwitchOption: 'rgb(255, 183, 112)',
         font: 'black',
