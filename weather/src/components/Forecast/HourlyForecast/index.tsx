@@ -3,6 +3,7 @@ import ForecastListItem from '../ForecastItem';
 import React, { FC } from 'react';
 import { useAppSelector } from '@hooks/storeHooks';
 import { selectHourlyForecast } from '@store/selectors/selectForecast';
+import {style} from '@global/style'
 
 const HourlyForecastWrapper = styled.div`
   overflow-x: scroll;
@@ -11,15 +12,7 @@ const HourlyForecastWrapper = styled.div`
   gap: 20px;
   padding: 10px;
   background-color: ${props => props.theme.colors.forecastBackground};
-  ::-webkit-scrollbar {
-    height: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.colors.forecastBackground};
-  }
-  ::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.colors.scrollBar};
-  }
+  ${style.scrollBar}
 `;
 
 const HourlyForecast: FC = () => {

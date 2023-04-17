@@ -9,6 +9,8 @@ export const PageContainer = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding-top: 10vh;
+
+
 `
 
 export const LoadingPageContent = styled.div`
@@ -20,6 +22,8 @@ export const LoadingPageContent = styled.div`
 `
 
 export const PageContent = styled.div`
+
+box-shadow: 0 0 5px #ccc;
     width: 90%;
     max-width: 1200px;
     display: flex;
@@ -30,6 +34,10 @@ export const PageContent = styled.div`
     box-sizing: border-box;
     flex-direction: column;
     background-color: ${props => props.theme.colors.contentBackground};
+
+    @media screen and (max-width: 560px){
+        padding: 20px;
+    }
 `
 
 export const ForecastContainer = styled.div`

@@ -4,6 +4,12 @@ export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 560px){
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
 `
 
 export const LocalityContainer = styled.div`

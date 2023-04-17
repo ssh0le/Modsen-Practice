@@ -14,5 +14,10 @@ export const SwitchContainer = styled.ul`
 export const SwithOption = styled.li<{isSelected: boolean}>`
     padding: 5px 10px;
     border-radius: 20px;
-    background-color: ${props => props.isSelected ? props.theme.colors.selectedSwitchOption : ""}
+    background-color: ${props => props.isSelected ? props.theme.colors.selectedSwitchOption : ""};
+    text-align: center;
+
+    /* @media screen and (max-width: 560px) {
+        te
+    } */
 `

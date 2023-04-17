@@ -1,12 +1,17 @@
 import styled from 'styled-components';
+import {style} from "@global/style"
 
 export const CalendarContainer = styled.div`
     display: flex;
-    font-size: 20px;
+    font-size: 19px;
     padding: 20px;
-    width:300px;
+    width:100%;
     flex-direction: column;
     gap: 20px;
+
+    @media screen and (max-width: 560px) {
+        padding: 0;
+    }
 `
 
 export const MessageContainer = styled.div`
@@ -28,10 +33,11 @@ export const ListContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     color: ${props => props.theme.colors.font};
     height: 150px;
     overflow-y: scroll;
+    ${style.scrollBar}
 `
 
 export const Header = styled.div`

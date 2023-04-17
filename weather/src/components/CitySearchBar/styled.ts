@@ -24,6 +24,7 @@ export const CitiesListContainer = styled.div`
 `
 
 export const CitiesList = styled.ul`
+    z-index: 9;
     position: absolute;
     display: flex;
     align-items: center;
