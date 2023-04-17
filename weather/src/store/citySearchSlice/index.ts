@@ -5,12 +5,14 @@ interface SearchState {
     isLoading: boolean,
     results: FoundedCitiesResponse | null,
     isError: boolean,
+    selectedCity: string | null,
 }
 
 const initialState: SearchState = {
     isLoading: false,
     isError: false,
-    results: null
+    results: null,
+    selectedCity: null
 }
 
 const searchSlice = createSlice({
@@ -29,6 +31,9 @@ const searchSlice = createSlice({
             state.isLoading = false;
             state.results = [];
         },
+        setSelectedCity: (state, action: PayloadAction<string>) => {
+            state.selectedCity = action.payload;
+        },
         searchFailed: (state) => {
             state.isLoading = false;
             state.isError = true;
@@ -36,5 +41,5 @@ const searchSlice = createSlice({
     }
 })
 
-export const {findCities, setResults, stopSearching, searchFailed} = searchSlice.actions;
+export const {findCities, setResults, stopSearching, searchFailed, setSelectedCity} = searchSlice.actions;
 export default searchSlice.reducer;

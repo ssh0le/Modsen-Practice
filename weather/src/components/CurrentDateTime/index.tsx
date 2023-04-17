@@ -3,15 +3,9 @@ import { useAppSelector } from '@hooks/storeHooks';
 import { selectTimeZone } from '@store/selectors';
 import { getTimeZonedCurrentDate } from '@helpers/getTimeZonedCurrentDate';
 import { DateTimeContainer, Date, Time } from './styled';
+import { getDateTime } from '@helpers/getDateTime';
 
-interface DateTime {
-  hours: number;
-  minutes: number;
-  dayWeek: string;
-  monthName: string;
-  monthDay: number;
-  year: number;
-}
+
 
 const CurrentDateTime: FC = () => {
   let timeZone = useAppSelector(selectTimeZone);
@@ -42,16 +36,3 @@ const CurrentDateTime: FC = () => {
 };
 
 export default CurrentDateTime;
-
-// helpers
-
-function getDateTime(date: Date): DateTime {
-  return {
-    hours: date.getHours(),
-    minutes: date.getMinutes(),
-    dayWeek: date.toLocaleDateString('en-EN', { weekday: 'long' }),
-    monthName: date.toLocaleString('default', { month: 'long' }),
-    monthDay: date.getDate(),
-    year: date.getFullYear(),
-  };
-}

@@ -5,9 +5,14 @@ import { CurrentLocationContainer } from './styled';
 
 const CurrentLocation:FC = () => {
   const locationInfo = useAppSelector(selectLocationInfo);
+  const selectedCity = useAppSelector(state => state.search.selectedCity);
+  let city = locationInfo?.city;
+  if (locationInfo?.city === "" && selectedCity !== null) {
+    city = selectedCity;
+  }
   return (
     <CurrentLocationContainer>
-      {locationInfo?.city}, {locationInfo?.countryName}
+      {city}, {locationInfo?.countryName}
     </CurrentLocationContainer>
   );
 };

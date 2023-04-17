@@ -1,5 +1,7 @@
 import React, { FC, MouseEvent } from 'react';
 import { City, Country, CityInfoContainer } from './styled';
+import { useAppDispatch } from '@hooks/storeHooks';
+import { setSelectedCity } from '@store/citySearchSlice';
 
 interface CityInfoProps {
   name: string;
@@ -20,7 +22,11 @@ const CityInfo: FC<CityInfoProps> = ({
   onClick,
   onMouseDown,
 }) => {
-  const handleOnClick = (): void => onClick(latitude, longitude);
+  const dispatch = useAppDispatch();
+  const handleOnClick = (): void => {
+    onClick(latitude, longitude);
+    dispatch(setSelectedCity(name));
+  };
   return (
     <CityInfoContainer onClick={handleOnClick} onMouseDown={onMouseDown}>
       <Country>{country}, </Country>
