@@ -188,3 +188,12 @@ export interface Event {
     dateTime: string
     timeZone: string
   }
+
+  export interface DateTime {
+    hours: number;
+    minutes: string;
+    dayWeek: string;
+    monthName: string;
+    monthDay: number;
+    year: number;
+  }
