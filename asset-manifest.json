@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/Modsen-Practice/static/css/main.073c9b0a.css",
+    "main.js": "/Modsen-Practice/static/js/main.8e5f9973.js",
+    "static/js/496.616ca536.chunk.js": "/Modsen-Practice/static/js/496.616ca536.chunk.js",
+    "static/media/clear-day.jpeg": "/Modsen-Practice/static/media/clear-day.0584318217775cfc5826.jpeg",
+    "static/media/fog.jpg": "/Modsen-Practice/static/media/fog.ac007d124d6adbf42ab6.jpg",
+    "static/media/snow-day.jpg": "/Modsen-Practice/static/media/snow-day.902d5ce70f7bc250029f.jpg",
+    "static/media/fog-day.jpg": "/Modsen-Practice/static/media/fog-day.5ddbea022e2e38ab7f67.jpg",
+    "static/media/rain.jpg": "/Modsen-Practice/static/media/rain.a92169620b4bbf3037ff.jpg",
+    "static/media/snow-night.jpg": "/Modsen-Practice/static/media/snow-night.2d9ec709b39f4a72ff0d.jpg",
+    "static/media/thunder-night.jpg": "/Modsen-Practice/static/media/thunder-night.43646de8cbcdf488d359.jpg",
+    "static/media/snowrain-day.jpg": "/Modsen-Practice/static/media/snowrain-day.47f0c2d0b06c7a04821a.jpg",
+    "static/media/cloudy.jpg": "/Modsen-Practice/static/media/cloudy.ec7af79c00d3152026c0.jpg",
+    "static/media/thunder-day.jpg": "/Modsen-Practice/static/media/thunder-day.e08d63378ec448def093.jpg",
+    "static/media/overcast.jpg": "/Modsen-Practice/static/media/overcast.3741b6a59fb10fc19fb1.jpg",
+    "static/media/cloudy-night.jpg": "/Modsen-Practice/static/media/cloudy-night.a4b589cf301bc75ffba6.jpg",
+    "static/media/rain-night.jpg": "/Modsen-Practice/static/media/rain-night.ecf87d470d8d040217c9.jpg",
+    "static/media/clear-Night.jpg": "/Modsen-Practice/static/media/clear-Night.b4b58a00f29fbd8fd949.jpg",
+    "static/media/snowrain-nigth.jpg": "/Modsen-Practice/static/media/snowrain-nigth.f0c93fe5a87df85237b5.jpg",
+    "static/media/drizzle.jpg": "/Modsen-Practice/static/media/drizzle.fef4d0a3a2de99bb8312.jpg",
+    "static/media/drizzle-night.jpg": "/Modsen-Practice/static/media/drizzle-night.d3ac7aedbb914c4ff9e9.jpg",
+    "static/media/overcast-night.jpg": "/Modsen-Practice/static/media/overcast-night.3b83aacee42e4c504058.jpg",
+    "index.html": "/Modsen-Practice/index.html",
+    "main.073c9b0a.css.map": "/Modsen-Practice/static/css/main.073c9b0a.css.map",
+    "main.8e5f9973.js.map": "/Modsen-Practice/static/js/main.8e5f9973.js.map",
+    "496.616ca536.chunk.js.map": "/Modsen-Practice/static/js/496.616ca536.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.8e5f9973.js"
+  ]
+}
