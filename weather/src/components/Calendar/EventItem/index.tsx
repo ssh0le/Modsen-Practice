@@ -5,18 +5,20 @@ import {
   EventTime,
   EventSummary,
 } from './styled';
+import { getDateTime } from '@helpers/getDateTime';
 
 interface UserEventProps {
-  start: string;
-  end: string;
+  start: Date;
   info: string;
 }
 
-const EventItem: FC<UserEventProps> = ({ start, end, info }) => {
-  const time = start;
+const EventItem: FC<UserEventProps> = ({ start, info }) => {
+  const dateTime = getDateTime(start);
   return (
     <EventContainer>
-      <EventTimeContainer><EventTime>{time}</EventTime></EventTimeContainer>
+      <EventTimeContainer>
+        <EventTime>{dateTime.hours}:{dateTime.minutes}</EventTime>
+      </EventTimeContainer>
       <EventSummary>{info}</EventSummary>
     </EventContainer>
   );

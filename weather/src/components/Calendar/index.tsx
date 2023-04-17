@@ -13,8 +13,8 @@ import EventItem from './EventItem';
 import { apiCalendar } from '@api/calendarApi';
 import { useAppDispatch, useAppSelector } from '@hooks/storeHooks';
 import { resetEvents, setEvents, setIsLoading } from '@store/eventsSlice';
-import { getFormattedTime } from '@helpers/getFormattedTime';
 import Loader from '@components/Loader';
+import { getTimeZonedDate } from '@helpers/getTimeZonedDate';
 
 function Calendar(): JSX.Element {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -42,7 +42,13 @@ function Calendar(): JSX.Element {
     if (!isFetched) {
       dispatch(setIsLoading(true));
       apiCalendar
-        .listUpcomingEvents(10)
+        .listEvents({
+          timeMin: new Date().toISOString(),
+          timeMax: new Date(new Date().setUTCHours(23,59,59,999)).toISOString(),
+          showDeleted: true,
+          maxResults: 10,
+          orderBy: 'updated'
+      })
         .then(({ result }: any) => {
           dispatch(setEvents(result.items));
         })
@@ -84,11 +90,10 @@ function Calendar(): JSX.Element {
             {isLoading && <Loader />}
             {!isLoading &&
               list.length > 0 &&
-              list.map(({ start, end, summary }, index) => (
+              list.map(({ start, summary }, index) => (
                 <EventItem
                   key={index}
-                  start={getFormattedTime(new Date(start.dateTime), new Date())}
-                  end={end.dateTime}
+                  start={getTimeZonedDate(new Date(start.dateTime), start.timeZone)}
                   info={summary}
                 />
               ))}

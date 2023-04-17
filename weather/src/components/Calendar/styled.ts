@@ -6,7 +6,7 @@ export const CalendarContainer = styled.div`
     padding: 20px;
     width:300px;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 `
 
 export const MessageContainer = styled.div`
@@ -28,8 +28,10 @@ export const ListContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     color: ${props => props.theme.colors.font};
+    height: 150px;
+    overflow-y: scroll;
 `
 
 export const Header = styled.div`
