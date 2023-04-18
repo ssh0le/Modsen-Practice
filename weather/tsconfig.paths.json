@@ -1,18 +1,18 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@components/*": ["src/components/*"],
-        "@api/*": ["src/api/*"],
-        "@helpers/*": ["src/helpers/*"],
-        "@global/*": ["src/global/*"],
-        "@sagas/*": ["src/store/sagas/*"],
-        "@store/*": ["src/store/*"],
-        "@hooks/*": ["src/hooks/*"],
-        "@selectors/*" : ["store/selectors/*"],
-        "@weather-icons/*": ["src/assets/weather-icons/*"],
-        "@background-images/*" :["src/assets/background-images/*"],
-        "@styles/*" :["src/styles/*"]
-      }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@api/*": ["src/api/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@global/*": ["src/global/*"],
+      "@sagas/*": ["src/store/sagas/*"],
+      "@store/*": ["src/store/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@selectors/*" : ["src/store/selectors/*"],
+      "@weather-icons/*": ["src/assets/weather-icons/*"],
+      "@background-images/*" :["src/assets/background-images/*"],
+      "@styles/*" :["src/styles/*"]
     }
   }
+}

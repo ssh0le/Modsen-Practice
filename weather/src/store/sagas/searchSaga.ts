@@ -3,7 +3,7 @@ import { setResults, findCities, searchFailed, stopSearching} from '@store/cityS
 import { PayloadAction } from '@reduxjs/toolkit'
 import { getFoundedCities } from '@api/citySearchApi'
 
-function* handleSearchCities(action: PayloadAction<string>): Generator<any, void, any> {
+export function* handleSearchCities(action: PayloadAction<string>): Generator<any, void, any> {
     try {
         if (action.payload.trim().length === 0) {
             yield put(stopSearching());

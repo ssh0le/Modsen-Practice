@@ -5,7 +5,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { ForecastGeolocation } from '@global/types';
 import { startFetch as startFetchForecast } from '@store/forecastSlice';
 
-function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>): Generator<any, void, any> {
+export function* handleGetLocationInfo(action: PayloadAction<ForecastGeolocation>): Generator<any, void, any> {
     try {
         yield put(startFetch());
         const { latitude, longitude } = action.payload;

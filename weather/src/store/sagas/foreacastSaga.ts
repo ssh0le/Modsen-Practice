@@ -5,7 +5,7 @@ import { getHourlyForecast } from '@api/hourlyForecastApi';
 import { getDailyForecast } from '@api/dailyForecastApi';
 import { ForecastGeolocation } from '@global/types';
 
-function* handleFetchForecast(action: PayloadAction<ForecastGeolocation>): Generator<any, void, any>
+export function* handleFetchForecast(action: PayloadAction<ForecastGeolocation>): Generator<any, void, any>
 {
     try {
         const { latitude, longitude } = action.payload;

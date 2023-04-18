@@ -1,7 +1,26 @@
 module.exports = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
+    "^@api/(.*)$": "<rootDir>/src/api/$1",
+    "^@helpers/(.*)$": "<rootDir>/src/helpers/$1",
+    "^@global/(.*)$": "<rootDir>/src/global/$1",
+    "^@sagas/(.*)$": "<rootDir>/src/store/sagas/$1",
+    "^@store/(.*)$": "<rootDir>/src/store/$1",
+    "^@hooks/(.*)$": "<rootDir>/src/hooks/$1",
+    "^@selectors/(.*)$": "<rootDir>/src/store/selectors/$1",
+    "^@weather-icons/(.*)$": "<rootDir>/src/assets/weather-icons/$1",
+    "^@background-images/(.*)$": "<rootDir>/src/assets/background-images/$1",
+    "^@styles/(.*)$": "<rootDir>/src/styles/$1",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|css|less)$": "<rootDir>/__mocks__/fileMock.js",
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  type: "module",
+  transform: {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.ts$": "ts-jest", 
+    "^.+\\.mjs$": "babel-jest",
+    "^.+\\.tsx?$": "ts-jest",
+  },
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
 };

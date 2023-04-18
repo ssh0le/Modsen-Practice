@@ -10,7 +10,9 @@ export const PageContainer = styled.div`
     justify-content: flex-start;
     padding-top: 10vh;
 
-
+    @media screen and (max-width: 560px){
+        padding: 0px;
+    }
 `
 
 export const LoadingPageContent = styled.div`
@@ -37,6 +39,7 @@ box-shadow: 0 0 5px #ccc;
 
     @media screen and (max-width: 560px){
         padding: 20px;
+        width: 100%;
     }
 `
 
