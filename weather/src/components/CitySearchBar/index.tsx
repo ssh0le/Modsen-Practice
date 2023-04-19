@@ -22,6 +22,7 @@ import { setGeolocation } from '@store/locationSlice';
 const CitySearchBar: FC = () => {
   const [showList, setShowList] = useState(false);
   const { isLoading, results } = useAppSelector((state) => state.search);
+  const city = useAppSelector(state => state.location.locationInfo?.city)
   const dispatch = useAppDispatch();
   const ref = useRef<HTMLInputElement>(null);
 
@@ -64,7 +65,7 @@ const CitySearchBar: FC = () => {
       <CityInput
         ref={ref}
         onChange={handleOnChange}
-        placeholder="City"
+        placeholder={city !== undefined ? city : "City"}
         onBlur={handleOnBlur}
         onFocus={handleOnFocus}
       />
